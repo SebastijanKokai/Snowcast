@@ -1,0 +1,41 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:snowcast/common/model/json_map.dart';
+import 'package:snowcast/weather/dto/weather_response.dart';
+import 'package:snowcast/weather/provider/weather_provider.dart';
+
+class WeatherRequestFailure implements Exception {}
+
+class WeatherNotFoundFailure implements Exception {}
+
+class RemoteWeatherProvider extends WeatherProvider {
+  RemoteWeatherProvider({http.Client? httpClient})
+      : _httpClient = httpClient ?? http.Client();
+
+  final http.Client _httpClient;
+  static const String _weatherApi = "api.met.no";
+
+  @override
+  Future<WeatherResponse> getWeather(
+      {required String lat, required String lon, required String alt}) async {
+    final weatherRequest = Uri.https(
+        _weatherApi,
+        "/weatherapi/locationforecast/2.0/complete",
+        {'lat': lat, 'lon': lon, 'altitude': alt});
+
+    final weatherResponse = await _httpClient.get(weatherRequest);
+
+    if (weatherResponse.statusCode != 200) {
+      throw WeatherRequestFailure();
+    }
+
+    final weatherJson = jsonDecode(weatherResponse.body) as JsonMap;
+
+    if (!weatherJson.containsKey('properties')) {
+      throw WeatherNotFoundFailure();
+    }
+
+    return WeatherResponse.fromJson(weatherJson);
+  }
+}
