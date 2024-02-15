@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:snowcast/common/model/json_map.dart';
+import 'package:snowcast/common/network/user_agent_client.dart';
 import 'package:snowcast/weather/dto/weather_response.dart';
 import 'package:snowcast/weather/provider/weather_provider.dart';
 
@@ -11,9 +11,13 @@ class WeatherNotFoundFailure implements Exception {}
 
 class RemoteWeatherProvider extends WeatherProvider {
   RemoteWeatherProvider({http.Client? httpClient})
-      : _httpClient = httpClient ?? http.Client();
+      : _httpClient = httpClient == null
+            ? UserAgentClient(_userAgent, http.Client())
+            : UserAgentClient(_userAgent, httpClient);
 
-  final http.Client _httpClient;
+  final UserAgentClient _httpClient;
+  static const String _userAgent =
+      "Snowcast/1.0.0+1 github.com/SebastijanKokai/Snowcast";
   static const String _weatherApi = "api.met.no";
 
   @override
