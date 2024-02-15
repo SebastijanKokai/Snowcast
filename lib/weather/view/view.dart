@@ -1,4 +1,4 @@
-export 'today_page.dart';
-export 'week_page.dart';
-export 'month_page.dart';
-export 'weather_page.dart';
+export 'today_view.dart';
+export 'week_view.dart';
+export 'month_view.dart';
+export 'weather_view.dart';

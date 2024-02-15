@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class WeekPage extends StatelessWidget {
-  const WeekPage({super.key});
+class MonthView extends StatelessWidget {
+  const MonthView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Week Page"),
+      child: Text("Weather Page"),
     );
   }
 }
