@@ -12,7 +12,20 @@ class WeatherPopulated extends StatelessWidget {
     return Center(
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         // WeatherIcon(condition: weather.weatherConditon),
-        Text(weather.type),
+        Text("Latitude: ${weather.coordinates.latitude.toString()}"),
+        Text("Longitude: ${weather.coordinates.longitude.toString()}"),
+        Text("Altitude: ${weather.coordinates.altitude.toString()}"),
+        Text("Meta - Updated_at: ${weather.metadata.updatedAt.toString()}"),
+        Text(
+            "Meta - Air temp: ${weather.metadata.units.airTemperature.toString()}"),
+        Text(
+            "Meta - Fog area fraction: ${weather.metadata.units.fogAreaFraction.toString()}"),
+        Text(
+            "Meta - Precipitation amount: ${weather.metadata.units.precipitationAmount.toString()}"),
+        Text(
+            "Meta - Ultra violet index clear sky: ${weather.metadata.units.ultraVioletIndexClearSky.toString()}"),
+        Text(
+            "Meta - Wind speed: ${weather.metadata.units.windSpeed.toString()}"),
         const SizedBox(
           height: 10,
         ),

@@ -14,7 +14,8 @@ class WeatherPage extends StatelessWidget {
     return RepositoryProvider(
       create: (context) => WeatherRepository(),
       child: BlocProvider(
-        create: (context) => WeatherCubit(context.read<WeatherRepository>()),
+        create: (context) =>
+            WeatherCubit(context.read<WeatherRepository>())..getWeather(),
         child: const WeatherView(),
       ),
     );

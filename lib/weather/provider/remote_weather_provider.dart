@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:snowcast/common/model/json_map.dart';
 import 'package:snowcast/common/network/user_agent_client.dart';
-import 'package:snowcast/weather/dto/weather_response.dart';
+import 'package:snowcast/weather/dto/weather_dto.dart';
 import 'package:snowcast/weather/provider/weather_provider.dart';
 
 class WeatherRequestFailure implements Exception {}
@@ -21,7 +21,7 @@ class RemoteWeatherProvider extends WeatherProvider {
   static const String _weatherApi = "api.met.no";
 
   @override
-  Future<WeatherResponse> getWeather(
+  Future<WeatherDto> getWeather(
       {required String lat, required String lon, required String alt}) async {
     final weatherRequest = Uri.https(
         _weatherApi,
@@ -40,6 +40,6 @@ class RemoteWeatherProvider extends WeatherProvider {
       throw WeatherNotFoundFailure();
     }
 
-    return WeatherResponse.fromJson(weatherJson);
+    return WeatherDto.fromJson(weatherJson);
   }
 }
