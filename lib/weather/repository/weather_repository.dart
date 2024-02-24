@@ -1,3 +1,4 @@
+import 'package:snowcast/weather/dto/extension_dto.dart';
 import 'package:snowcast/weather/dto/weather_dto.dart';
 import 'package:snowcast/weather/entity/weather.dart';
 import 'package:snowcast/weather/provider/remote_weather_provider.dart';

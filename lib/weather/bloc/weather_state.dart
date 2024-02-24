@@ -11,7 +11,7 @@ extension WeatherStatusX on WeatherStatus {
 }
 
 class WeatherState extends Equatable {
-  const WeatherState({this.status = WeatherStatus.initial, Weather? weather})
+  WeatherState({this.status = WeatherStatus.initial, Weather? weather})
       : weather = weather ?? Weather.empty;
 
   final WeatherStatus status;

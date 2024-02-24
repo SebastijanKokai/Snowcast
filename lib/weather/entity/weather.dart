@@ -1,16 +1,26 @@
 class Weather {
-  const Weather({required this.coordinates, required this.metadata});
+  Weather(
+      {required this.coordinates,
+      required this.metadata,
+      required this.timeseries});
 
   final Coordinates coordinates;
   final Metadata metadata;
+  final List<Timeseries> timeseries;
 
-  static const empty =
-      Weather(coordinates: Coordinates.empty, metadata: Metadata.empty);
+  static final empty = Weather(
+      coordinates: Coordinates.empty,
+      metadata: Metadata.empty,
+      timeseries: List<Timeseries>.empty());
 
-  Weather copyWith({Coordinates? coordinates, Metadata? metadata}) {
+  Weather copyWith(
+      {Coordinates? coordinates,
+      Metadata? metadata,
+      List<Timeseries>? timeseries}) {
     return Weather(
         coordinates: coordinates ?? this.coordinates,
-        metadata: metadata ?? this.metadata);
+        metadata: metadata ?? this.metadata,
+        timeseries: timeseries ?? this.timeseries);
   }
 }
 
@@ -65,4 +75,47 @@ class Units {
       ultraVioletIndexClearSky: '',
       windFromDirection: '',
       windSpeed: '');
+}
+
+class Timeseries {
+  const Timeseries(this.time, this.instant);
+
+  final String time;
+  final WeatherDetails instant;
+
+  static const empty = Timeseries("", WeatherDetails.empty);
+}
+
+class WeatherDetails {
+  const WeatherDetails(
+      {required this.symbolCode,
+      required this.airTemperature,
+      required this.airTemperatureMax,
+      required this.airTemperatureMin,
+      required this.precipitationAmount,
+      required this.fogAreaFraction,
+      required this.ultraVioletIndexClearSky,
+      required this.windFromDirection,
+      required this.windSpeed});
+
+  final String symbolCode;
+  final double airTemperature;
+  final double airTemperatureMax;
+  final double airTemperatureMin;
+  final double precipitationAmount;
+  final double fogAreaFraction;
+  final double ultraVioletIndexClearSky;
+  final double windFromDirection;
+  final double windSpeed;
+
+  static const empty = WeatherDetails(
+      symbolCode: "",
+      airTemperature: 0,
+      airTemperatureMax: 0,
+      airTemperatureMin: 0,
+      precipitationAmount: 0,
+      fogAreaFraction: 0,
+      ultraVioletIndexClearSky: 0,
+      windFromDirection: 0,
+      windSpeed: 0);
 }

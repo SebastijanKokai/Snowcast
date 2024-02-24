@@ -4,7 +4,7 @@ import 'package:snowcast/weather/entity/weather.dart';
 import 'package:snowcast/weather/repository/weather_repository.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit(this._weatherRepository) : super(const WeatherState());
+  WeatherCubit(this._weatherRepository) : super(WeatherState());
 
   final WeatherRepository _weatherRepository;
 
@@ -17,7 +17,7 @@ class WeatherCubit extends Cubit<WeatherState> {
           lat: "43.268045", lon: "20.826309", alt: "1770");
 
       emit(state.copyWith(status: WeatherStatus.success, weather: weather));
-    } on Exception {
+    } catch (e) {
       emit(state.copyWith(status: WeatherStatus.failure));
     }
   }
