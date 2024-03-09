@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snowcast/weather/entity/weather.dart';
+import 'package:snowcast/weather/view/widgets/weather_icon.dart';
 
 class WeatherPopulated extends StatelessWidget {
   WeatherPopulated({required Weather weather, super.key})
@@ -27,7 +28,7 @@ class WeatherPopulated extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        // WeatherIcon(condition: weather.weatherConditon),
+        WeatherIcon(symbolCode: _weatherDetails.symbolCode),
         Text("Latitude: ${_coordinates.latitude}"),
         Text("Longitude: ${_coordinates.longitude}"),
         Text("Altitude: ${_coordinates.altitude}"),
