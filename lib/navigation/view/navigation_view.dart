@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/navigation/view/navigation_items.dart';
+import 'package:snowcast/weather/view/widgets/mountain_selector.dart';
 import '../bloc/bloc.dart';
 
 class Navigation extends StatelessWidget {
@@ -23,7 +25,20 @@ class NavigationView extends StatelessWidget {
     return BlocBuilder<NavigationBloc, NavigationState>(
       builder: (context, state) {
         return Scaffold(
-          body: pages.elementAt(state.tabIndex),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Stack(
+                children: [
+                  pages.elementAt(state.tabIndex),
+                  const Align(
+                    alignment: Alignment.topCenter,
+                    child: MountainSelector(),
+                  )
+                ],
+              ),
+            ),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: navigationItems,
             currentIndex: state.tabIndex,
