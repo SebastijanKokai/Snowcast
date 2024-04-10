@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:snowcast/weather/entity/weather.dart';
+import 'package:snowcast/weather/domain/entity/weather.dart';
 
 enum WeatherStatus { initial, loading, success, failure }
 

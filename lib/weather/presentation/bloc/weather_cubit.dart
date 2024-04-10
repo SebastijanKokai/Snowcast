@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowcast/weather/bloc/weather_state.dart';
-import 'package:snowcast/weather/entity/weather.dart';
-import 'package:snowcast/weather/repository/weather_repository.dart';
+import 'package:snowcast/weather/presentation/bloc/weather_state.dart';
+import 'package:snowcast/weather/data/repository/weather_repository.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this._weatherRepository) : super(WeatherState());

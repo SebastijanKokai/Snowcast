@@ -1,8 +1,8 @@
-import 'package:snowcast/weather/dto/extension_dto.dart';
-import 'package:snowcast/weather/dto/weather_dto.dart';
-import 'package:snowcast/weather/entity/weather.dart';
-import 'package:snowcast/weather/provider/remote_weather_provider.dart';
-import 'package:snowcast/weather/provider/weather_provider.dart';
+import 'package:snowcast/weather/data/dto/extension_dto.dart';
+import 'package:snowcast/weather/data/dto/weather_dto.dart';
+import 'package:snowcast/weather/domain/entity/weather.dart';
+import 'package:snowcast/weather/data/provider/remote_weather_provider.dart';
+import 'package:snowcast/weather/data/provider/weather_provider.dart';
 
 class WeatherRepository {
   WeatherRepository({WeatherProvider? weatherProvider})

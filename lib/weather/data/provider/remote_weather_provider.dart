@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:snowcast/common/model/json_map.dart';
 import 'package:snowcast/common/network/user_agent_client.dart';
-import 'package:snowcast/weather/dto/weather_dto.dart';
-import 'package:snowcast/weather/provider/weather_provider.dart';
+import 'package:snowcast/weather/data/dto/weather_dto.dart';
+import 'package:snowcast/weather/data/provider/weather_provider.dart';
 
 class WeatherRequestFailure implements Exception {}
 

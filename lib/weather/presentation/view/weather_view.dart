@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snowcast/weather/bloc/weather_cubit.dart';
-import 'package:snowcast/weather/bloc/weather_state.dart';
-import 'package:snowcast/weather/repository/weather_repository.dart';
+import 'package:snowcast/weather/presentation/bloc/weather_cubit.dart';
+import 'package:snowcast/weather/presentation/bloc/weather_state.dart';
+import 'package:snowcast/weather/data/repository/weather_repository.dart';
 
 import 'state/states.dart';
 

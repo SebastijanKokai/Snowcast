@@ -1,4 +1,4 @@
-import 'package:snowcast/weather/dto/weather_dto.dart';
+import 'package:snowcast/weather/data/dto/weather_dto.dart';
 
 abstract class WeatherProvider {
   Future<WeatherDto> getWeather(

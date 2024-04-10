@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:snowcast/weather/entity/weather.dart';
-import 'package:snowcast/weather/view/widgets/weather_icon.dart';
+import 'package:snowcast/weather/domain/entity/weather.dart';
+import 'package:snowcast/weather/presentation/view/widgets/weather_icon.dart';
 
 class WeatherPopulated extends StatelessWidget {
   WeatherPopulated({required Weather weather, super.key})

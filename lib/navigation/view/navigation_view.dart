@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/navigation/view/navigation_items.dart';
-import 'package:snowcast/weather/view/widgets/mountain_selector.dart';
+import 'package:snowcast/weather/presentation/view/widgets/mountain_selector.dart';
 import '../bloc/bloc.dart';
 
 class Navigation extends StatelessWidget {
