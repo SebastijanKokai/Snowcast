@@ -7,13 +7,13 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final WeatherRepository _weatherRepository;
 
-  Future<void> getWeather() async {
+  Future<void> getWeather(
+      {required String lat, required String lon, required String alt}) async {
     emit(state.copyWith(status: WeatherStatus.loading));
 
     try {
-      // Hardcoded Kopaonik location with base altitude
-      final weather = await _weatherRepository.getWeather(
-          lat: "43.268045", lon: "20.826309", alt: "1770");
+      final weather =
+          await _weatherRepository.getWeather(lat: lat, lon: lon, alt: alt);
 
       emit(state.copyWith(status: WeatherStatus.success, weather: weather));
     } catch (e) {

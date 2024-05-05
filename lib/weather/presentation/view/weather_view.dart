@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/weather/presentation/bloc/weather_cubit.dart';
 import 'package:snowcast/weather/presentation/bloc/weather_state.dart';
-import 'package:snowcast/weather/data/repository/weather_repository.dart';
 
 import 'state/states.dart';
 
@@ -11,14 +10,7 @@ class WeatherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => WeatherRepository(),
-      child: BlocProvider(
-        create: (context) =>
-            WeatherCubit(context.read<WeatherRepository>())..getWeather(),
-        child: const WeatherView(),
-      ),
-    );
+    return const WeatherView();
   }
 }
 
