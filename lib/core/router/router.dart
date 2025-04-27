@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:snowcast/core/navigation/scaffold_with_nav_bar.dart';
 import 'package:snowcast/core/router/routes.dart';
 import 'package:snowcast/features/snow_notifications/notifications_page.dart';
-import 'package:snowcast/features/weather/weather_page.dart';
+import 'package:snowcast/features/weather/presentation/view/weather_view.dart';
 import 'package:snowcast/features/webcam/webcam_page.dart';
 
 final router = GoRouter(initialLocation: AppRoute.weather.path, routes: [

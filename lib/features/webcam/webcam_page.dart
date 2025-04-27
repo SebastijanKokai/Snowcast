@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:snowcast/features/mountain_selector/domain/extensions/mountain_extensions.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_cubit.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
 
@@ -26,16 +25,14 @@ class _WebcamPageState extends State<WebcamPage> {
 
   @override
   Widget build(BuildContext context) {
-    final initialRequest =
-        context.read<MountainCubit>().state.selectedMountain.getCameraUrl();
+    final initialRequest = context.read<MountainCubit>().state.selectedMountain.webcamUrl;
 
     return BlocListener<MountainCubit, MountainState>(
       listenWhen: (previous, current) {
-        return previous.webcamUrl != current.webcamUrl;
+        return previous.selectedMountain.webcamUrl != current.selectedMountain.webcamUrl;
       },
       listener: (context, state) {
-        _controller.loadUrl(
-            urlRequest: URLRequest(url: WebUri(state.webcamUrl)));
+        _controller.loadUrl(urlRequest: URLRequest(url: WebUri(state.selectedMountain.webcamUrl)));
       },
       child: InAppWebView(
         initialUrlRequest: URLRequest(url: WebUri(initialRequest)),

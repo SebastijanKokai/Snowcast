@@ -25,7 +25,7 @@ class MountainSelector extends StatelessWidget {
 }
 
 class _DropdownContainer extends StatelessWidget {
-  const _DropdownContainer({super.key});
+  const _DropdownContainer();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _DropdownContainer extends StatelessWidget {
 }
 
 class _MountainDropDown extends StatelessWidget {
-  const _MountainDropDown({super.key});
+  const _MountainDropDown();
 
   @override
   Widget build(BuildContext context) {

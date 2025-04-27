@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MountainState {
   Mountain get selectedMountain => throw _privateConstructorUsedError;
-  String get webcamUrl => throw _privateConstructorUsedError;
 
   /// Create a copy of MountainState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +31,7 @@ abstract class $MountainStateCopyWith<$Res> {
           MountainState value, $Res Function(MountainState) then) =
       _$MountainStateCopyWithImpl<$Res, MountainState>;
   @useResult
-  $Res call({Mountain selectedMountain, String webcamUrl});
+  $Res call({Mountain selectedMountain});
 }
 
 /// @nodoc
@@ -51,17 +50,12 @@ class _$MountainStateCopyWithImpl<$Res, $Val extends MountainState>
   @override
   $Res call({
     Object? selectedMountain = null,
-    Object? webcamUrl = null,
   }) {
     return _then(_value.copyWith(
       selectedMountain: null == selectedMountain
           ? _value.selectedMountain
           : selectedMountain // ignore: cast_nullable_to_non_nullable
               as Mountain,
-      webcamUrl: null == webcamUrl
-          ? _value.webcamUrl
-          : webcamUrl // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -74,7 +68,7 @@ abstract class _$$MountainStateImplCopyWith<$Res>
       __$$MountainStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Mountain selectedMountain, String webcamUrl});
+  $Res call({Mountain selectedMountain});
 }
 
 /// @nodoc
@@ -91,17 +85,12 @@ class __$$MountainStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedMountain = null,
-    Object? webcamUrl = null,
   }) {
     return _then(_$MountainStateImpl(
       selectedMountain: null == selectedMountain
           ? _value.selectedMountain
           : selectedMountain // ignore: cast_nullable_to_non_nullable
               as Mountain,
-      webcamUrl: null == webcamUrl
-          ? _value.webcamUrl
-          : webcamUrl // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -109,19 +98,15 @@ class __$$MountainStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MountainStateImpl implements _MountainState {
-  _$MountainStateImpl(
-      {this.selectedMountain = Mountain.jahorina, this.webcamUrl = ''});
+  _$MountainStateImpl({this.selectedMountain = Mountain.jahorina});
 
   @override
   @JsonKey()
   final Mountain selectedMountain;
-  @override
-  @JsonKey()
-  final String webcamUrl;
 
   @override
   String toString() {
-    return 'MountainState(selectedMountain: $selectedMountain, webcamUrl: $webcamUrl)';
+    return 'MountainState(selectedMountain: $selectedMountain)';
   }
 
   @override
@@ -130,13 +115,11 @@ class _$MountainStateImpl implements _MountainState {
         (other.runtimeType == runtimeType &&
             other is _$MountainStateImpl &&
             (identical(other.selectedMountain, selectedMountain) ||
-                other.selectedMountain == selectedMountain) &&
-            (identical(other.webcamUrl, webcamUrl) ||
-                other.webcamUrl == webcamUrl));
+                other.selectedMountain == selectedMountain));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedMountain, webcamUrl);
+  int get hashCode => Object.hash(runtimeType, selectedMountain);
 
   /// Create a copy of MountainState
   /// with the given fields replaced by the non-null parameter values.
@@ -148,14 +131,11 @@ class _$MountainStateImpl implements _MountainState {
 }
 
 abstract class _MountainState implements MountainState {
-  factory _MountainState(
-      {final Mountain selectedMountain,
-      final String webcamUrl}) = _$MountainStateImpl;
+  factory _MountainState({final Mountain selectedMountain}) =
+      _$MountainStateImpl;
 
   @override
   Mountain get selectedMountain;
-  @override
-  String get webcamUrl;
 
   /// Create a copy of MountainState
   /// with the given fields replaced by the non-null parameter values.
