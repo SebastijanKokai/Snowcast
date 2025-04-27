@@ -30,6 +30,34 @@ enum Mountain {
     41.8389,
     23.4883,
     'https://www.banskoski.com/en/webcam/bansko',
+  ),
+  staraPlanina(
+    "Stara Planina",
+    1700,
+    43.6333,
+    22.3333,
+    'https://www.skiresort.info/ski-resort/stara-planina-babin-zub/webcams/',
+  ),
+  valThorens(
+    "Val Thorens",
+    2300,
+    45.2975,
+    6.5803,
+    'https://www.valthorens.com/en/webcams/',
+  ),
+  les2Alpes(
+    "Les 2 Alpes",
+    1650,
+    45.0500,
+    6.1200,
+    'https://www.les2alpes.com/hiver/live/webcams/',
+  ),
+  cortinaAmpezzo(
+    "Cortina d’Ampezzo",
+    1224,
+    46.5400,
+    12.1333,
+    'https://www.dolomitisuperski.com/en/Experience/Ski-areas/Cortina-d-Ampezzo/Webcam',
   );
 
   final String name;
