@@ -45,7 +45,7 @@ enum Mountain {
   ),
   valThorens(
     "Val Thorens",
-    2300,
+    3230,
     1850,
     45.2975,
     6.5803,
