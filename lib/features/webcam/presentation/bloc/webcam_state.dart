@@ -6,7 +6,6 @@ enum WebcamStatus {
   initial,
   loading,
   loaded,
-  error,
 }
 
 @freezed

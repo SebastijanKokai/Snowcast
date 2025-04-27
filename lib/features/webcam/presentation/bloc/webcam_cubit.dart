@@ -11,8 +11,4 @@ class WebcamCubit extends Cubit<WebcamState> {
   void setLoaded() {
     emit(state.copyWith(status: WebcamStatus.loaded));
   }
-
-  void setError() {
-    emit(state.copyWith(status: WebcamStatus.error));
-  }
 }
