@@ -6,7 +6,7 @@ import 'package:snowcast/features/weather/data/repository/weather_repository.dar
 import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_state.dart';
 
-import 'state/states.dart';
+import '../widget/state/states.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
