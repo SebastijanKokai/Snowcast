@@ -5,8 +5,7 @@ import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_s
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_state.dart';
-
-import '../widget/state/states.dart';
+import 'package:snowcast/features/weather/presentation/widget/state/states.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
@@ -36,7 +35,8 @@ class _WeatherViewState extends State<WeatherView> {
     context.read<WeatherCubit>().getWeather(
           lat: mountain.latitude,
           lon: mountain.longitude,
-          alt: mountain.altitude,
+          topAlt: mountain.topAltitude,
+          bottomAlt: mountain.bottomAltitude,
         );
   }
 
@@ -60,7 +60,7 @@ class _WeatherViewState extends State<WeatherView> {
               case WeatherStatus.loading:
                 return const WeatherLoading();
               case WeatherStatus.success:
-                return WeatherPopulated(weather: state.weather);
+                return const WeatherSuccess();
               case WeatherStatus.failure:
                 return WeatherError(text: state.error);
             }

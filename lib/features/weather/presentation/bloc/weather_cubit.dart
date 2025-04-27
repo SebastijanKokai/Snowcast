@@ -7,17 +7,28 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final WeatherRepository _weatherRepository;
 
-  Future<void> getWeather({required double lat, required double lon, required int alt}) async {
+  Future<void> getWeather(
+      {required double lat, required double lon, required int topAlt, required int bottomAlt}) async {
     emit(state.copyWith(status: WeatherStatus.loading));
 
     try {
-      final weather = await _weatherRepository.getWeather(
+      final topWeather = await _weatherRepository.getWeather(
         lat: lat.toString(),
         lon: lon.toString(),
-        alt: alt.toString(),
+        alt: topAlt.toString(),
       );
 
-      emit(state.copyWith(status: WeatherStatus.success, weather: weather));
+      final bottomWeather = await _weatherRepository.getWeather(
+        lat: lat.toString(),
+        lon: lon.toString(),
+        alt: bottomAlt.toString(),
+      );
+
+      emit(state.copyWith(
+        status: WeatherStatus.success,
+        topWeather: topWeather,
+        bottomWeather: bottomWeather,
+      ));
     } catch (e) {
       emit(
         state.copyWith(status: WeatherStatus.failure, error: 'WeatherCubit => $e'),

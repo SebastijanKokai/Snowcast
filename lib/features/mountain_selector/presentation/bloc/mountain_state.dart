@@ -6,6 +6,7 @@ enum Mountain {
   jahorina(
     "Jahorina",
     1916,
+    1300,
     43.7126,
     18.5691,
     'https://www.jahorina.org/info/webcam-jahorina.php',
@@ -13,6 +14,7 @@ enum Mountain {
   kopaonik(
     "Kopaonik",
     2017,
+    1070,
     43.2856,
     20.8222,
     'https://m.infokop.net/webcamlive.php',
@@ -20,6 +22,7 @@ enum Mountain {
   zlatibor(
     "Zlatibor",
     1496,
+    1000,
     43.7294,
     19.7044,
     'https://uzivokamere.com/zlatibor',
@@ -27,6 +30,7 @@ enum Mountain {
   bansko(
     "Bansko",
     2560,
+    990,
     41.8389,
     23.4883,
     'https://www.banskoski.com/en/webcam/bansko',
@@ -34,6 +38,7 @@ enum Mountain {
   staraPlanina(
     "Stara Planina",
     1700,
+    1300,
     43.6333,
     22.3333,
     'https://www.skiresort.info/ski-resort/stara-planina-babin-zub/webcams/',
@@ -41,12 +46,14 @@ enum Mountain {
   valThorens(
     "Val Thorens",
     2300,
+    1850,
     45.2975,
     6.5803,
     'https://www.valthorens.com/en/webcams/',
   ),
   les2Alpes(
     "Les 2 Alpes",
+    3600,
     1650,
     45.0500,
     6.1200,
@@ -54,6 +61,7 @@ enum Mountain {
   ),
   cortinaAmpezzo(
     "Cortina d’Ampezzo",
+    2932,
     1224,
     46.5400,
     12.1333,
@@ -61,14 +69,16 @@ enum Mountain {
   );
 
   final String name;
-  final int altitude;
+  final int topAltitude;
+  final int bottomAltitude;
   final double latitude;
   final double longitude;
   final String webcamUrl;
 
   const Mountain(
     this.name,
-    this.altitude,
+    this.topAltitude,
+    this.bottomAltitude,
     this.latitude,
     this.longitude,
     this.webcamUrl,
