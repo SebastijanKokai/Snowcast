@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:snowcast/core/extensions/context_extensions.dart';
 import 'package:snowcast/features/weather/domain/entity/weather.dart';
 import 'package:snowcast/features/weather/presentation/widget/weather_icon.dart';
-
-extension TextThemeX on BuildContext {
-  TextTheme get text => Theme.of(this).textTheme;
-  ColorScheme get colors => Theme.of(this).colorScheme;
-}
 
 extension WeatherColorsX on String {
   Color get backgroundColor {
