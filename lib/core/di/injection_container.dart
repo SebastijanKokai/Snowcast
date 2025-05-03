@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workmanager/workmanager.dart';
 import 'package:snowcast/core/services/shared_preferences_service.dart';
+import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_cubit.dart';
 import 'package:snowcast/features/snow_notifications/data/provider/notification_provider.dart';
 import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
 import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
@@ -16,8 +18,29 @@ final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
   await initializeSharedPreferences();
+  await initializeFlutterLocalNotifications();
+  await initializeWorkmanager();
+  await initializeMountainSelectorDependencies();
   await initializeWeatherDependencies();
   await initializeNotificationDependencies();
+}
+
+Future<void> initializeFlutterLocalNotifications() async {
+  getIt.registerLazySingleton<FlutterLocalNotificationsPlugin>(
+    () => FlutterLocalNotificationsPlugin(),
+  );
+}
+
+Future<void> initializeWorkmanager() async {
+  getIt.registerLazySingleton<Workmanager>(
+    () => Workmanager(),
+  );
+}
+
+Future<void> initializeMountainSelectorDependencies() async {
+  getIt.registerFactory<MountainCubit>(
+    () => MountainCubit(),
+  );
 }
 
 Future<void> initializeSharedPreferences() async {
@@ -53,9 +76,10 @@ Future<void> initializeNotificationDependencies() async {
 
   getIt.registerLazySingleton<NotificationUsecase>(
     () => NotificationUsecase(
-      notifications: FlutterLocalNotificationsPlugin(),
+      notifications: getIt(),
       weatherRepository: getIt(),
       notificationRepository: getIt(),
+      workmanager: getIt(),
     ),
   );
 

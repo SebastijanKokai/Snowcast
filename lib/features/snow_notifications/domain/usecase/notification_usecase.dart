@@ -12,14 +12,17 @@ class NotificationUsecase {
   final FlutterLocalNotificationsPlugin _notifications;
   final WeatherRepository _weatherRepository;
   final NotificationRepository _notificationRepository;
+  final Workmanager _workmanager;
 
   NotificationUsecase({
     required FlutterLocalNotificationsPlugin notifications,
     required WeatherRepository weatherRepository,
     required NotificationRepository notificationRepository,
+    required Workmanager workmanager,
   })  : _notifications = notifications,
         _weatherRepository = weatherRepository,
-        _notificationRepository = notificationRepository {
+        _notificationRepository = notificationRepository,
+        _workmanager = workmanager {
     _initializeNotifications();
     _initializeWorkmanager();
   }
@@ -41,14 +44,14 @@ class NotificationUsecase {
   }
 
   void _initializeWorkmanager() {
-    Workmanager().initialize(
+    _workmanager.initialize(
       callbackDispatcher,
       isInDebugMode: true,
     );
   }
 
   Future<void> startBackgroundChecks() async {
-    await Workmanager().registerPeriodicTask(
+    await _workmanager.registerPeriodicTask(
       _checkSnowfallTask,
       _checkSnowfallTask,
       frequency: const Duration(seconds: 5),
@@ -59,7 +62,7 @@ class NotificationUsecase {
   }
 
   Future<void> stopBackgroundChecks() async {
-    await Workmanager().cancelByUniqueName(_checkSnowfallTask);
+    await _workmanager.cancelByUniqueName(_checkSnowfallTask);
   }
 
   Future<void> checkForSnowfall(Weather weather) async {
