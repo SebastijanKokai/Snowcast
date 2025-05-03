@@ -39,14 +39,6 @@ class NotificationUsecase {
     );
   }
 
-  Future<void> _initializeNotifications() async {
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const iosSettings = DarwinInitializationSettings();
-    const initSettings = InitializationSettings(android: androidSettings, iOS: iosSettings);
-
-    await _notifications.initialize(initSettings);
-  }
-
   Future<void> startBackgroundChecks() async {
     await _workmanager.registerPeriodicTask(
       _checkSnowfallTask,

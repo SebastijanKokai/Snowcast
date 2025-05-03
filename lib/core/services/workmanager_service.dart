@@ -7,7 +7,6 @@ import 'package:snowcast/features/snow_notifications/data/repository/notificatio
 import 'package:snowcast/features/weather/data/provider/remote_weather_provider.dart';
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
-import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
 
 class WorkmanagerService {
   static const String _checkSnowfallTask = 'checkSnowfallTask';
