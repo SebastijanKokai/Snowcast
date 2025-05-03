@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
-import 'package:snowcast/core/services/shared_preferences_service.dart';
+import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
-import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
 import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_cubit.dart';
 import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_state.dart';
 
@@ -12,20 +11,9 @@ class NotificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<SharedPreferencesService>(
-      future: SharedPreferencesService.instance,
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        return BlocProvider(
-          create: (context) => NotificationCubit(
-            NotificationUsecase(),
-          ),
-          child: const _NotificationsView(),
-        );
-      },
+    return BlocProvider(
+      create: (context) => getIt<NotificationCubit>(),
+      child: const _NotificationsView(),
     );
   }
 }
