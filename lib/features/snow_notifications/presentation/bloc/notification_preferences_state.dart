@@ -7,5 +7,6 @@ part 'notification_preferences_state.freezed.dart';
 class NotificationPreferencesState with _$NotificationPreferencesState {
   factory NotificationPreferencesState({
     @Default({}) Map<Mountain, bool> selectedMountains,
+    @Default('') String error,
   }) = _NotificationPreferencesState;
 }

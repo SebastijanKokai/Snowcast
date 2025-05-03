@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NotificationPreferencesState {
   Map<Mountain, bool> get selectedMountains =>
       throw _privateConstructorUsedError;
+  String get error => throw _privateConstructorUsedError;
 
   /// Create a copy of NotificationPreferencesState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +35,7 @@ abstract class $NotificationPreferencesStateCopyWith<$Res> {
       _$NotificationPreferencesStateCopyWithImpl<$Res,
           NotificationPreferencesState>;
   @useResult
-  $Res call({Map<Mountain, bool> selectedMountains});
+  $Res call({Map<Mountain, bool> selectedMountains, String error});
 }
 
 /// @nodoc
@@ -54,12 +55,17 @@ class _$NotificationPreferencesStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? selectedMountains = null,
+    Object? error = null,
   }) {
     return _then(_value.copyWith(
       selectedMountains: null == selectedMountains
           ? _value.selectedMountains
           : selectedMountains // ignore: cast_nullable_to_non_nullable
               as Map<Mountain, bool>,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -73,7 +79,7 @@ abstract class _$$NotificationPreferencesStateImplCopyWith<$Res>
       __$$NotificationPreferencesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<Mountain, bool> selectedMountains});
+  $Res call({Map<Mountain, bool> selectedMountains, String error});
 }
 
 /// @nodoc
@@ -92,12 +98,17 @@ class __$$NotificationPreferencesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedMountains = null,
+    Object? error = null,
   }) {
     return _then(_$NotificationPreferencesStateImpl(
       selectedMountains: null == selectedMountains
           ? _value._selectedMountains
           : selectedMountains // ignore: cast_nullable_to_non_nullable
               as Map<Mountain, bool>,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -107,7 +118,7 @@ class __$$NotificationPreferencesStateImplCopyWithImpl<$Res>
 class _$NotificationPreferencesStateImpl
     implements _NotificationPreferencesState {
   _$NotificationPreferencesStateImpl(
-      {final Map<Mountain, bool> selectedMountains = const {}})
+      {final Map<Mountain, bool> selectedMountains = const {}, this.error = ''})
       : _selectedMountains = selectedMountains;
 
   final Map<Mountain, bool> _selectedMountains;
@@ -121,8 +132,12 @@ class _$NotificationPreferencesStateImpl
   }
 
   @override
+  @JsonKey()
+  final String error;
+
+  @override
   String toString() {
-    return 'NotificationPreferencesState(selectedMountains: $selectedMountains)';
+    return 'NotificationPreferencesState(selectedMountains: $selectedMountains, error: $error)';
   }
 
   @override
@@ -131,12 +146,13 @@ class _$NotificationPreferencesStateImpl
         (other.runtimeType == runtimeType &&
             other is _$NotificationPreferencesStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._selectedMountains, _selectedMountains));
+                .equals(other._selectedMountains, _selectedMountains) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_selectedMountains));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_selectedMountains), error);
 
   /// Create a copy of NotificationPreferencesState
   /// with the given fields replaced by the non-null parameter values.
@@ -152,11 +168,13 @@ class _$NotificationPreferencesStateImpl
 abstract class _NotificationPreferencesState
     implements NotificationPreferencesState {
   factory _NotificationPreferencesState(
-          {final Map<Mountain, bool> selectedMountains}) =
-      _$NotificationPreferencesStateImpl;
+      {final Map<Mountain, bool> selectedMountains,
+      final String error}) = _$NotificationPreferencesStateImpl;
 
   @override
   Map<Mountain, bool> get selectedMountains;
+  @override
+  String get error;
 
   /// Create a copy of NotificationPreferencesState
   /// with the given fields replaced by the non-null parameter values.

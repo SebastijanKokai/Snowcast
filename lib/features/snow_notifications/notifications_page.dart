@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
+import 'package:snowcast/core/services/shared_preferences_service.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
+import 'package:snowcast/features/snow_notifications/data/repository/notification_preferences_repository.dart';
 import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_preferences_cubit.dart';
 import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_preferences_state.dart';
 
@@ -10,9 +12,23 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotificationPreferencesCubit(),
-      child: const _NotificationsView(),
+    return FutureBuilder<SharedPreferencesService>(
+      future: SharedPreferencesService.instance,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        return RepositoryProvider(
+          create: (context) => NotificationPreferencesRepository(snapshot.data!),
+          child: BlocProvider(
+            create: (context) => NotificationPreferencesCubit(
+              context.read<NotificationPreferencesRepository>(),
+            ),
+            child: const _NotificationsView(),
+          ),
+        );
+      },
     );
   }
 }
@@ -26,27 +42,39 @@ class _NotificationsView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Snow Notifications'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              'Select mountains to receive snow notifications',
-              style: context.text.titleMedium,
+      body: BlocListener<NotificationPreferencesCubit, NotificationPreferencesState>(
+        listener: (context, state) {
+          if (state.error.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+                backgroundColor: context.colors.error,
+              ),
+            );
+          }
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'Select mountains to receive snow notifications',
+                style: context.text.titleMedium,
+              ),
             ),
-          ),
-          const Divider(),
-          Expanded(
-            child: ListView.builder(
-              itemCount: Mountain.values.length,
-              itemBuilder: (context, index) {
-                final mountain = Mountain.values[index];
-                return _MountainSelectionTile(mountain: mountain);
-              },
+            const Divider(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: Mountain.values.length,
+                itemBuilder: (context, index) {
+                  final mountain = Mountain.values[index];
+                  return _MountainSelectionTile(mountain: mountain);
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
