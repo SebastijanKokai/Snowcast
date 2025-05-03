@@ -34,7 +34,7 @@ final router = GoRouter(initialLocation: AppRoute.weather.path, routes: [
           routes: <RouteBase>[
             GoRoute(
               path: AppRoute.notifications.path,
-              builder: (context, state) => const NotificationsPage(),
+              builder: (context, state) => const NotificationPage(),
             ),
           ],
         ),

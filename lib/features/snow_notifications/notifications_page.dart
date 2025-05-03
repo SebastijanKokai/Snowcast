@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 import 'package:snowcast/core/services/shared_preferences_service.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
-import 'package:snowcast/features/snow_notifications/data/repository/notification_preferences_repository.dart';
-import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_preferences_cubit.dart';
-import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_preferences_state.dart';
+import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
+import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_cubit.dart';
+import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_state.dart';
 
-class NotificationsPage extends StatelessWidget {
-  const NotificationsPage({super.key});
+class NotificationPage extends StatelessWidget {
+  const NotificationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,11 @@ class NotificationsPage extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        return RepositoryProvider(
-          create: (context) => NotificationPreferencesRepository(snapshot.data!),
-          child: BlocProvider(
-            create: (context) => NotificationPreferencesCubit(
-              context.read<NotificationPreferencesRepository>(),
-            ),
-            child: const _NotificationsView(),
+        return BlocProvider(
+          create: (context) => NotificationCubit(
+            NotificationUsecase(),
           ),
+          child: const _NotificationsView(),
         );
       },
     );
@@ -42,7 +39,7 @@ class _NotificationsView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Snow Notifications'),
       ),
-      body: BlocListener<NotificationPreferencesCubit, NotificationPreferencesState>(
+      body: BlocListener<NotificationCubit, NotificationState>(
         listener: (context, state) {
           if (state.error.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -87,7 +84,7 @@ class _MountainSelectionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NotificationPreferencesCubit, NotificationPreferencesState>(
+    return BlocBuilder<NotificationCubit, NotificationState>(
       builder: (context, state) {
         final isSelected = state.selectedMountains[mountain] ?? false;
 
@@ -103,9 +100,9 @@ class _MountainSelectionTile extends StatelessWidget {
           ),
           trailing: Switch(
             value: isSelected,
-            onChanged: (_) => context.read<NotificationPreferencesCubit>().toggleMountain(mountain),
+            onChanged: (_) => context.read<NotificationCubit>().toggleMountain(mountain),
           ),
-          onTap: () => context.read<NotificationPreferencesCubit>().toggleMountain(mountain),
+          onTap: () => context.read<NotificationCubit>().toggleMountain(mountain),
         );
       },
     );

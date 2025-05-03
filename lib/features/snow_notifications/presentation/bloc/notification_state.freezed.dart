@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'notification_preferences_state.dart';
+part of 'notification_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,41 +15,38 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$NotificationPreferencesState {
+mixin _$NotificationState {
   Map<Mountain, bool> get selectedMountains =>
       throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of NotificationPreferencesState
+  /// Create a copy of NotificationState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $NotificationPreferencesStateCopyWith<NotificationPreferencesState>
-      get copyWith => throw _privateConstructorUsedError;
+  $NotificationStateCopyWith<NotificationState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotificationPreferencesStateCopyWith<$Res> {
-  factory $NotificationPreferencesStateCopyWith(
-          NotificationPreferencesState value,
-          $Res Function(NotificationPreferencesState) then) =
-      _$NotificationPreferencesStateCopyWithImpl<$Res,
-          NotificationPreferencesState>;
+abstract class $NotificationStateCopyWith<$Res> {
+  factory $NotificationStateCopyWith(
+          NotificationState value, $Res Function(NotificationState) then) =
+      _$NotificationStateCopyWithImpl<$Res, NotificationState>;
   @useResult
   $Res call({Map<Mountain, bool> selectedMountains, String error});
 }
 
 /// @nodoc
-class _$NotificationPreferencesStateCopyWithImpl<$Res,
-        $Val extends NotificationPreferencesState>
-    implements $NotificationPreferencesStateCopyWith<$Res> {
-  _$NotificationPreferencesStateCopyWithImpl(this._value, this._then);
+class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState>
+    implements $NotificationStateCopyWith<$Res> {
+  _$NotificationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of NotificationPreferencesState
+  /// Create a copy of NotificationState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -71,28 +68,25 @@ class _$NotificationPreferencesStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$NotificationPreferencesStateImplCopyWith<$Res>
-    implements $NotificationPreferencesStateCopyWith<$Res> {
-  factory _$$NotificationPreferencesStateImplCopyWith(
-          _$NotificationPreferencesStateImpl value,
-          $Res Function(_$NotificationPreferencesStateImpl) then) =
-      __$$NotificationPreferencesStateImplCopyWithImpl<$Res>;
+abstract class _$$NotificationStateImplCopyWith<$Res>
+    implements $NotificationStateCopyWith<$Res> {
+  factory _$$NotificationStateImplCopyWith(_$NotificationStateImpl value,
+          $Res Function(_$NotificationStateImpl) then) =
+      __$$NotificationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<Mountain, bool> selectedMountains, String error});
 }
 
 /// @nodoc
-class __$$NotificationPreferencesStateImplCopyWithImpl<$Res>
-    extends _$NotificationPreferencesStateCopyWithImpl<$Res,
-        _$NotificationPreferencesStateImpl>
-    implements _$$NotificationPreferencesStateImplCopyWith<$Res> {
-  __$$NotificationPreferencesStateImplCopyWithImpl(
-      _$NotificationPreferencesStateImpl _value,
-      $Res Function(_$NotificationPreferencesStateImpl) _then)
+class __$$NotificationStateImplCopyWithImpl<$Res>
+    extends _$NotificationStateCopyWithImpl<$Res, _$NotificationStateImpl>
+    implements _$$NotificationStateImplCopyWith<$Res> {
+  __$$NotificationStateImplCopyWithImpl(_$NotificationStateImpl _value,
+      $Res Function(_$NotificationStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of NotificationPreferencesState
+  /// Create a copy of NotificationState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -100,7 +94,7 @@ class __$$NotificationPreferencesStateImplCopyWithImpl<$Res>
     Object? selectedMountains = null,
     Object? error = null,
   }) {
-    return _then(_$NotificationPreferencesStateImpl(
+    return _then(_$NotificationStateImpl(
       selectedMountains: null == selectedMountains
           ? _value._selectedMountains
           : selectedMountains // ignore: cast_nullable_to_non_nullable
@@ -115,9 +109,8 @@ class __$$NotificationPreferencesStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NotificationPreferencesStateImpl
-    implements _NotificationPreferencesState {
-  _$NotificationPreferencesStateImpl(
+class _$NotificationStateImpl implements _NotificationState {
+  _$NotificationStateImpl(
       {final Map<Mountain, bool> selectedMountains = const {}, this.error = ''})
       : _selectedMountains = selectedMountains;
 
@@ -137,14 +130,14 @@ class _$NotificationPreferencesStateImpl
 
   @override
   String toString() {
-    return 'NotificationPreferencesState(selectedMountains: $selectedMountains, error: $error)';
+    return 'NotificationState(selectedMountains: $selectedMountains, error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotificationPreferencesStateImpl &&
+            other is _$NotificationStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._selectedMountains, _selectedMountains) &&
             (identical(other.error, error) || other.error == error));
@@ -154,33 +147,30 @@ class _$NotificationPreferencesStateImpl
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_selectedMountains), error);
 
-  /// Create a copy of NotificationPreferencesState
+  /// Create a copy of NotificationState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NotificationPreferencesStateImplCopyWith<
-          _$NotificationPreferencesStateImpl>
-      get copyWith => __$$NotificationPreferencesStateImplCopyWithImpl<
-          _$NotificationPreferencesStateImpl>(this, _$identity);
+  _$$NotificationStateImplCopyWith<_$NotificationStateImpl> get copyWith =>
+      __$$NotificationStateImplCopyWithImpl<_$NotificationStateImpl>(
+          this, _$identity);
 }
 
-abstract class _NotificationPreferencesState
-    implements NotificationPreferencesState {
-  factory _NotificationPreferencesState(
+abstract class _NotificationState implements NotificationState {
+  factory _NotificationState(
       {final Map<Mountain, bool> selectedMountains,
-      final String error}) = _$NotificationPreferencesStateImpl;
+      final String error}) = _$NotificationStateImpl;
 
   @override
   Map<Mountain, bool> get selectedMountains;
   @override
   String get error;
 
-  /// Create a copy of NotificationPreferencesState
+  /// Create a copy of NotificationState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NotificationPreferencesStateImplCopyWith<
-          _$NotificationPreferencesStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$NotificationStateImplCopyWith<_$NotificationStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
