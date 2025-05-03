@@ -3,13 +3,13 @@ import 'package:snowcast/core/services/shared_preferences_service.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
 
 class NotificationProvider {
-  NotificationProvider();
+  NotificationProvider(this._preferencesService);
 
   static const _preferencesKey = 'notification_preferences';
+  final SharedPreferencesService _preferencesService;
 
   Future<Map<Mountain, bool>> getPreferences() async {
-    final preferencesService = await SharedPreferencesService.instance;
-    final jsonString = preferencesService.getString(_preferencesKey);
+    final jsonString = _preferencesService.getString(_preferencesKey);
 
     if (jsonString == null) {
       return {};
@@ -25,10 +25,9 @@ class NotificationProvider {
   }
 
   Future<void> savePreferences(Map<Mountain, bool> preferences) async {
-    final preferencesService = await SharedPreferencesService.instance;
     final jsonMap = preferences.map(
       (key, value) => MapEntry(key.name, value),
     );
-    await preferencesService.setString(_preferencesKey, json.encode(jsonMap));
+    await _preferencesService.setString(_preferencesKey, json.encode(jsonMap));
   }
 }

@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:snowcast/core/services/shared_preferences_service.dart';
 import 'package:snowcast/features/snow_notifications/data/provider/notification_provider.dart';
 import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
 import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
@@ -13,8 +15,16 @@ import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
 final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+  await initializeSharedPreferences();
   await initializeWeatherDependencies();
   await initializeNotificationDependencies();
+}
+
+Future<void> initializeSharedPreferences() async {
+  final prefs = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferencesService>(
+    () => SharedPreferencesService.create(prefs),
+  );
 }
 
 Future<void> initializeWeatherDependencies() async {
@@ -34,7 +44,7 @@ Future<void> initializeWeatherDependencies() async {
 
 Future<void> initializeNotificationDependencies() async {
   getIt.registerLazySingleton<NotificationProvider>(
-    () => NotificationProvider(),
+    () => NotificationProvider(getIt()),
   );
 
   getIt.registerLazySingleton<NotificationRepository>(
@@ -43,9 +53,9 @@ Future<void> initializeNotificationDependencies() async {
 
   getIt.registerLazySingleton<NotificationUsecase>(
     () => NotificationUsecase(
-      FlutterLocalNotificationsPlugin(),
-      getIt(),
-      getIt(),
+      notifications: FlutterLocalNotificationsPlugin(),
+      weatherRepository: getIt(),
+      notificationRepository: getIt(),
     ),
   );
 

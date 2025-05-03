@@ -1,5 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:snowcast/features/snow_notifications/data/provider/notification_provider.dart';
+import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/weather/domain/entity/weather.dart';
@@ -13,13 +13,13 @@ class NotificationUsecase {
   final WeatherRepository _weatherRepository;
   final NotificationRepository _notificationRepository;
 
-  NotificationUsecase([
-    FlutterLocalNotificationsPlugin? notifications,
-    WeatherRepository? weatherRepository,
-    NotificationRepository? notificationRepository,
-  ])  : _notifications = notifications ?? FlutterLocalNotificationsPlugin(),
-        _weatherRepository = weatherRepository ?? WeatherRepository(),
-        _notificationRepository = notificationRepository ?? NotificationRepository(NotificationProvider()) {
+  NotificationUsecase({
+    required FlutterLocalNotificationsPlugin notifications,
+    required WeatherRepository weatherRepository,
+    required NotificationRepository notificationRepository,
+  })  : _notifications = notifications,
+        _weatherRepository = weatherRepository,
+        _notificationRepository = notificationRepository {
     _initializeNotifications();
     _initializeWorkmanager();
   }
@@ -139,7 +139,7 @@ class NotificationUsecase {
 void callbackDispatcher() {
   Workmanager().executeTask((taskName, inputData) async {
     if (taskName == NotificationUsecase._checkSnowfallTask) {
-      final usecase = NotificationUsecase();
+      final usecase = getIt<NotificationUsecase>();
       final selectedMountains = await usecase._getSelectedMountains();
 
       for (final mountain in selectedMountains) {

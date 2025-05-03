@@ -6,8 +6,8 @@ class SharedPreferencesService {
   static SharedPreferencesService? _instance;
   final SharedPreferences _preferences;
 
-  static Future<SharedPreferencesService> get instance async {
-    _instance ??= SharedPreferencesService._(await SharedPreferences.getInstance());
+  factory SharedPreferencesService.create(SharedPreferences prefs) {
+    _instance ??= SharedPreferencesService._(prefs);
     return _instance!;
   }
 
