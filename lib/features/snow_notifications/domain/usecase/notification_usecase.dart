@@ -1,5 +1,4 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/weather/domain/entity/weather.dart';
@@ -22,10 +21,7 @@ class NotificationUsecase {
   })  : _notifications = notifications,
         _weatherRepository = weatherRepository,
         _notificationRepository = notificationRepository,
-        _workmanager = workmanager {
-    _initializeNotifications();
-    _initializeWorkmanager();
-  }
+        _workmanager = workmanager;
 
   Future<Map<Mountain, bool>> getPreferences() async {
     return _notificationRepository.getPreferences();
@@ -35,19 +31,20 @@ class NotificationUsecase {
     return _notificationRepository.savePreferences(preferences);
   }
 
+  Future<Weather> getWeather(Mountain mountain) async {
+    return _weatherRepository.getWeather(
+      lat: mountain.latitude.toString(),
+      lon: mountain.longitude.toString(),
+      alt: mountain.topAltitude.toString(),
+    );
+  }
+
   Future<void> _initializeNotifications() async {
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings();
     const initSettings = InitializationSettings(android: androidSettings, iOS: iosSettings);
 
     await _notifications.initialize(initSettings);
-  }
-
-  void _initializeWorkmanager() {
-    _workmanager.initialize(
-      callbackDispatcher,
-      isInDebugMode: true,
-    );
   }
 
   Future<void> startBackgroundChecks() async {
@@ -66,7 +63,7 @@ class NotificationUsecase {
   }
 
   Future<void> checkForSnowfall(Weather weather) async {
-    final selectedMountains = await _getSelectedMountains();
+    final selectedMountains = await getSelectedMountains();
     if (selectedMountains.isEmpty) return;
 
     final mountainsWithSnow = <Mountain>[];
@@ -78,7 +75,7 @@ class NotificationUsecase {
     }
 
     if (mountainsWithSnow.isNotEmpty) {
-      await _showSnowNotification(mountainsWithSnow);
+      await showSnowNotification(mountainsWithSnow);
     }
   }
 
@@ -107,7 +104,7 @@ class NotificationUsecase {
     return false;
   }
 
-  Future<void> _showSnowNotification(List<Mountain> mountains) async {
+  Future<void> showSnowNotification(List<Mountain> mountains) async {
     final mountainNames = mountains.map((m) => m.name).join(', ');
     const title = 'Snow Alert!';
     final body = 'Snow is expected in: $mountainNames';
@@ -131,29 +128,9 @@ class NotificationUsecase {
     );
   }
 
-  Future<List<Mountain>> _getSelectedMountains() async {
+  Future<List<Mountain>> getSelectedMountains() async {
     final jsonMap = await _notificationRepository.getPreferences();
 
     return Mountain.values.where((mountain) => jsonMap[mountain] == true).toList();
   }
-}
-
-@pragma('vm:entry-point')
-void callbackDispatcher() {
-  Workmanager().executeTask((taskName, inputData) async {
-    if (taskName == NotificationUsecase._checkSnowfallTask) {
-      final usecase = getIt<NotificationUsecase>();
-      final selectedMountains = await usecase._getSelectedMountains();
-
-      for (final mountain in selectedMountains) {
-        final weatherData = await usecase._weatherRepository.getWeather(
-          lat: mountain.latitude.toString(),
-          lon: mountain.longitude.toString(),
-          alt: mountain.topAltitude.toString(),
-        );
-        await usecase.checkForSnowfall(weatherData);
-      }
-    }
-    return true;
-  });
 }

@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:snowcast/core/services/shared_preferences_service.dart';
+import 'package:snowcast/core/services/workmanager_service.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_cubit.dart';
 import 'package:snowcast/features/snow_notifications/data/provider/notification_provider.dart';
 import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
@@ -25,28 +26,31 @@ Future<void> initializeDependencies() async {
   await initializeNotificationDependencies();
 }
 
-Future<void> initializeFlutterLocalNotifications() async {
-  getIt.registerLazySingleton<FlutterLocalNotificationsPlugin>(
-    () => FlutterLocalNotificationsPlugin(),
+Future<void> initializeSharedPreferences() async {
+  final prefs = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferencesService>(
+    () => SharedPreferencesService.create(prefs),
   );
 }
 
+Future<void> initializeFlutterLocalNotifications() async {
+  final notifications = FlutterLocalNotificationsPlugin();
+  const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+  const iosSettings = DarwinInitializationSettings();
+  const initSettings = InitializationSettings(android: androidSettings, iOS: iosSettings);
+
+  await notifications.initialize(initSettings);
+  getIt.registerLazySingleton<FlutterLocalNotificationsPlugin>(() => notifications);
+}
+
 Future<void> initializeWorkmanager() async {
-  getIt.registerLazySingleton<Workmanager>(
-    () => Workmanager(),
-  );
+  await WorkmanagerService.initialize();
+  getIt.registerLazySingleton<Workmanager>(() => Workmanager());
 }
 
 Future<void> initializeMountainSelectorDependencies() async {
   getIt.registerFactory<MountainCubit>(
     () => MountainCubit(),
-  );
-}
-
-Future<void> initializeSharedPreferences() async {
-  final prefs = await SharedPreferences.getInstance();
-  getIt.registerLazySingleton<SharedPreferencesService>(
-    () => SharedPreferencesService.create(prefs),
   );
 }
 

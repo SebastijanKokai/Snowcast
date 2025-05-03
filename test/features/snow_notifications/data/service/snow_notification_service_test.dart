@@ -3,13 +3,14 @@ import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:snowcast/features/snow_notifications/data/service/snow_notification_service.dart';
+import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
+import 'package:snowcast/features/weather/data/dto/weather_dto.dart';
 
 import 'snow_notification_service_test.mocks.dart';
 
 @GenerateMocks([SharedPreferences, FlutterLocalNotificationsPlugin])
 void main() {
-  late SnowNotificationService service;
+  late NotificationUsecase service;
   late MockSharedPreferences mockPrefs;
   late MockFlutterLocalNotificationsPlugin mockNotifications;
 
@@ -18,14 +19,14 @@ void main() {
     mockNotifications = MockFlutterLocalNotificationsPlugin();
     when(mockNotifications.initialize(any)).thenAnswer((_) async => true);
     when(mockNotifications.show(any, any, any, any)).thenAnswer((_) async => true);
-    service = SnowNotificationService(mockPrefs, mockNotifications);
+    service = NotificationUsecase(mockPrefs, mockNotifications);
   });
 
   group('SnowNotificationService', () {
     test('should not show notification when no mountains are selected', () async {
       when(mockPrefs.getString('selected_mountains')).thenReturn('{}');
 
-      await service.checkForSnowfall(mockWeatherData);
+      await service.checkForSnowfall(WeatherDto.fromJson(mockWeatherData));
 
       verifyNever(mockNotifications.show(any, any, any, any));
     });
@@ -33,7 +34,7 @@ void main() {
     test('should detect snowfall for selected mountain', () async {
       when(mockPrefs.getString('selected_mountains')).thenReturn('{"Jahorina": true}');
 
-      await service.checkForSnowfall(mockWeatherDataWithSnowfall);
+      await service.checkForSnowfall(WeatherDto.fromJson(mockWeatherDataWithSnowfall));
 
       verify(mockNotifications.show(any, any, any, any)).called(1);
     });
@@ -44,7 +45,7 @@ void main() {
 
       when(mockPrefs.getString('selected_mountains')).thenReturn('{"Jahorina": true}');
 
-      await service.checkForSnowfall(highTempData);
+      await service.checkForSnowfall(WeatherDto.fromJson(highTempData));
 
       verifyNever(mockNotifications.show(any, any, any, any));
     });
