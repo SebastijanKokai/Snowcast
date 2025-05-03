@@ -4,10 +4,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../mountain_selector/presentation/bloc/mountain_state.dart';
 
 class SnowNotificationService {
-  final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _notifications;
   final SharedPreferences _prefs;
 
-  SnowNotificationService(this._prefs) {
+  SnowNotificationService(this._prefs, [FlutterLocalNotificationsPlugin? notifications])
+      : _notifications = notifications ?? FlutterLocalNotificationsPlugin() {
     _initializeNotifications();
   }
 
