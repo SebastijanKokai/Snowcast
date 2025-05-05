@@ -2,12 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 import 'package:snowcast/core/di/injection_container.dart';
+import 'package:snowcast/core/utils/permission_utils.dart';
+import 'package:snowcast/core/utils/plaform_utils.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
 import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_cubit.dart';
 import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_state.dart';
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
+
+  @override
+  State<NotificationPage> createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _requestNotificationPermission(context);
+    });
+  }
+
+  Future<void> _requestNotificationPermission(BuildContext context) async {
+    if (await isAndroid13OrAbove() && context.mounted) {
+      showNotificationPermissionDialog(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
