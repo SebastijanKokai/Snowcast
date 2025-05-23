@@ -28,8 +28,15 @@ void showNotificationPermissionDialog(BuildContext context) {
   );
 }
 
+Future<bool> isNotificationPermissionGranted() async {
+  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  final settings =
+      flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+  return await settings?.areNotificationsEnabled() ?? false;
+}
+
 Future<void> _requestNotificationPermission() async {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
       ?.requestNotificationsPermission();

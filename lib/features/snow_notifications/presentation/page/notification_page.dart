@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/core/utils/permission_utils.dart';
@@ -26,7 +27,10 @@ class _NotificationPageState extends State<NotificationPage> {
 
   Future<void> _requestNotificationPermission(BuildContext context) async {
     if (await isAndroid13OrAbove() && context.mounted) {
-      showNotificationPermissionDialog(context);
+      final isGranted = await isNotificationPermissionGranted();
+      if (!isGranted && context.mounted) {
+        showNotificationPermissionDialog(context);
+      }
     }
   }
 
@@ -47,6 +51,9 @@ class _NotificationsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Snow Notifications'),
+        actions: const [
+          _CancelButton(),
+        ],
       ),
       body: BlocListener<NotificationCubit, NotificationState>(
         listener: (context, state) {
@@ -82,6 +89,47 @@ class _NotificationsView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _CancelButton extends StatelessWidget {
+  const _CancelButton();
+
+  Future<void> _showConfirmationDialog(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Cancel Notifications'),
+        content: const Text('Are you sure you want to stop receiving snow notifications?'),
+        actions: [
+          TextButton(
+            onPressed: () => context.pop(),
+            child: const Text('NO'),
+          ),
+          TextButton(
+            onPressed: () => context.pop(true),
+            style: TextButton.styleFrom(
+              foregroundColor: context.colors.error,
+            ),
+            child: const Text('YES'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true && context.mounted) {
+      context.read<NotificationCubit>().stopBackgroundChecks();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () => _showConfirmationDialog(context),
+      icon: const Icon(Icons.notifications_off),
+      tooltip: 'Cancel notifications',
+      color: context.colors.error,
     );
   }
 }

@@ -32,9 +32,8 @@ class NotificationCubit extends Cubit<NotificationState> {
     }
   }
 
-  @override
-  Future<void> close() async {
+  Future<void> stopBackgroundChecks() async {
     await _notificationUsecase.stopBackgroundChecks();
-    return super.close();
+    emit(state.copyWith(selectedMountains: {}, error: ''));
   }
 }
