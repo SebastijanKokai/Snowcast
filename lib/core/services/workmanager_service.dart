@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,25 +11,27 @@ import 'package:snowcast/features/weather/data/provider/remote_weather_provider.
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
 
-class WorkmanagerService {
-  static const String _checkSnowfallTask = 'checkSnowfallTask';
+const String _checkSnowfallTask = 'checkSnowfallTask';
 
-  static Future<void> initialize() async {
-    final workmanager = Workmanager();
-    workmanager.initialize(
-      callbackDispatcher,
-      isInDebugMode: true,
-    );
-  }
+Future<void> initializeWorkManager() async {
+  final workmanager = Workmanager();
+  workmanager.initialize(callbackDispatcher, isInDebugMode: true);
+}
 
-  @pragma('vm:entry-point')
-  static void callbackDispatcher() {
-    Workmanager().executeTask((taskName, inputData) async {
+@pragma('vm:entry-point')
+void callbackDispatcher() {
+  Workmanager().executeTask((taskName, inputData) async {
+    try {
+      DartPluginRegistrant.ensureInitialized();
+
+      await dotenv.load(fileName: ".env");
+
       if (taskName == _checkSnowfallTask) {
         final notifications = FlutterLocalNotificationsPlugin();
+
         await notifications.initialize(
           const InitializationSettings(
-            android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+            android: AndroidInitializationSettings('logo_notification'),
             iOS: DarwinInitializationSettings(),
           ),
         );
@@ -37,7 +42,6 @@ class WorkmanagerService {
         final notificationRepository = NotificationRepository(notificationProvider);
         final weatherProvider = RemoteWeatherProvider();
         final weatherRepository = WeatherRepository(weatherProvider: weatherProvider);
-
         final usecase = NotificationUsecase(
           weatherRepository: weatherRepository,
           notificationRepository: notificationRepository,
@@ -46,13 +50,14 @@ class WorkmanagerService {
         );
 
         final selectedMountains = await usecase.getSelectedMountains();
-
         for (final mountain in selectedMountains) {
           final weatherData = await usecase.getWeather(mountain);
           await usecase.checkForSnowfall(weatherData);
         }
       }
-      return true;
-    });
-  }
+    } catch (e) {
+      print('Error in background task: $e');
+    }
+    return Future.value(true);
+  });
 }

@@ -35,7 +35,7 @@ Future<void> initializeSharedPreferences() async {
 
 Future<void> initializeFlutterLocalNotifications() async {
   final notifications = FlutterLocalNotificationsPlugin();
-  const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+  const androidSettings = AndroidInitializationSettings('logo_notification');
   const iosSettings = DarwinInitializationSettings();
   const initSettings = InitializationSettings(android: androidSettings, iOS: iosSettings);
 
@@ -44,7 +44,7 @@ Future<void> initializeFlutterLocalNotifications() async {
 }
 
 Future<void> initializeWorkmanager() async {
-  await WorkmanagerService.initialize();
+  await initializeWorkManager();
   getIt.registerLazySingleton<Workmanager>(() => Workmanager());
 }
 
