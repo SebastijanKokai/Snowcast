@@ -18,4 +18,8 @@ class SharedPreferencesService {
   String? getString(String key) {
     return _preferences.getString(key);
   }
+
+  Future<bool> remove(String key) async {
+    return _preferences.remove(key);
+  }
 }

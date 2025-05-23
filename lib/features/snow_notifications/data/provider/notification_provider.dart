@@ -30,4 +30,8 @@ class NotificationProvider {
     );
     await _preferencesService.setString(_preferencesKey, json.encode(jsonMap));
   }
+
+  Future<void> clearPreferences() async {
+    await _preferencesService.remove(_preferencesKey);
+  }
 }

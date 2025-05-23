@@ -15,7 +15,7 @@ const String _checkSnowfallTask = 'checkSnowfallTask';
 
 Future<void> initializeWorkManager() async {
   final workmanager = Workmanager();
-  workmanager.initialize(callbackDispatcher, isInDebugMode: true);
+  workmanager.initialize(callbackDispatcher);
 }
 
 @pragma('vm:entry-point')

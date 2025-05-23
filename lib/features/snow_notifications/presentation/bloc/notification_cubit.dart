@@ -34,6 +34,7 @@ class NotificationCubit extends Cubit<NotificationState> {
 
   Future<void> stopBackgroundChecks() async {
     await _notificationUsecase.stopBackgroundChecks();
+    await _notificationUsecase.clearPreferences();
     emit(state.copyWith(selectedMountains: {}, error: ''));
   }
 }

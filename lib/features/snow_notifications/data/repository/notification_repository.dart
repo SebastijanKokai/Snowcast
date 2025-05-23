@@ -13,4 +13,8 @@ class NotificationRepository {
   Future<void> savePreferences(Map<Mountain, bool> preferences) async {
     return _provider.savePreferences(preferences);
   }
+
+  Future<void> clearPreferences() async {
+    return _provider.clearPreferences();
+  }
 }

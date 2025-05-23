@@ -31,6 +31,10 @@ class NotificationUsecase {
     return _notificationRepository.savePreferences(preferences);
   }
 
+  Future<void> clearPreferences() async {
+    return _notificationRepository.clearPreferences();
+  }
+
   Future<Weather> getWeather(Mountain mountain) async {
     return _weatherRepository.getWeather(
       lat: mountain.latitude.toString(),
