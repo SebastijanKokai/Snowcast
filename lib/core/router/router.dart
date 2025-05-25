@@ -18,6 +18,7 @@ final router = GoRouter(initialLocation: AppRoute.weather.path, routes: [
           routes: <RouteBase>[
             GoRoute(
               path: AppRoute.weather.path,
+              name: AppRoute.weather.name,
               builder: (context, state) => const WeatherPage(),
             ),
           ],
@@ -26,6 +27,7 @@ final router = GoRouter(initialLocation: AppRoute.weather.path, routes: [
           routes: <RouteBase>[
             GoRoute(
               path: AppRoute.webcam.path,
+              name: AppRoute.webcam.name,
               builder: (context, state) => const WebcamPage(),
             ),
           ],
@@ -34,6 +36,7 @@ final router = GoRouter(initialLocation: AppRoute.weather.path, routes: [
           routes: <RouteBase>[
             GoRoute(
               path: AppRoute.notifications.path,
+              name: AppRoute.notifications.name,
               builder: (context, state) => const NotificationPage(),
             ),
           ],
