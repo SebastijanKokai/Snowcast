@@ -14,6 +14,10 @@ import 'package:snowcast/features/weather/data/provider/weather_provider.dart';
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/weather/domain/usecase/weather_usecase.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
+import '../../features/localization/data/repositories/locale_repository_impl.dart';
+import '../../features/localization/domain/repositories/locale_repository.dart';
+import '../../features/localization/domain/usecases/locale_usecase.dart';
+import '../../features/localization/presentation/cubit/locale_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -24,6 +28,7 @@ Future<void> initializeDependencies() async {
   await initializeMountainSelectorDependencies();
   await initializeWeatherDependencies();
   await initializeNotificationDependencies();
+  await initializeLocalizationDependencies();
 }
 
 Future<void> initializeSharedPreferences() async {
@@ -90,4 +95,13 @@ Future<void> initializeNotificationDependencies() async {
   getIt.registerFactory<NotificationCubit>(
     () => NotificationCubit(getIt()),
   );
+}
+
+Future<void> initializeLocalizationDependencies() async {
+  getIt
+    ..registerLazySingleton<LocaleRepository>(
+      () => LocaleRepositoryImpl(getIt()),
+    )
+    ..registerLazySingleton(() => LocaleUsecase(getIt()))
+    ..registerFactory(() => LocaleCubit(getIt()));
 }
