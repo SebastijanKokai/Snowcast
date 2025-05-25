@@ -20,19 +20,23 @@ class WeatherSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           title,
-          style: context.text.titleMedium?.copyWith(color: textColor),
+          style: context.text.labelMedium?.copyWith(color: textColor),
         ),
-        const SizedBox(height: 8),
-        WeatherIcon(
-          symbolCode: weatherDetails.symbolCode,
+        const SizedBox(height: 4),
+        SizedBox(
+          height: 40,
+          child: WeatherIcon(
+            symbolCode: weatherDetails.symbolCode,
+          ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 4),
         Text(
           '${weatherDetails.airTemperature}$tempUnit',
-          style: context.text.displayMedium?.copyWith(
+          style: context.text.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
             color: textColor,
           ),

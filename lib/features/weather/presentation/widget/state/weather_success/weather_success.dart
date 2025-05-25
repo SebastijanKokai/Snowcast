@@ -29,25 +29,30 @@ class WeatherSuccess extends StatelessWidget {
               child: Column(
                 children: [
                   LocationHeader(textColor: textColor),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      WeatherSection(
-                        title: 'Top',
-                        weatherDetails: topWeather.timeseries.first.instant,
-                        tempUnit: topWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
-                        textColor: textColor,
+                      Expanded(
+                        child: WeatherSection(
+                          title: 'Top',
+                          weatherDetails: topWeather.timeseries.first.instant,
+                          tempUnit: topWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
+                          textColor: textColor,
+                        ),
                       ),
-                      WeatherSection(
-                        title: 'Bottom',
-                        weatherDetails: bottomWeather.timeseries.first.instant,
-                        tempUnit: bottomWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
-                        textColor: textColor,
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: WeatherSection(
+                          title: 'Bottom',
+                          weatherDetails: bottomWeather.timeseries.first.instant,
+                          tempUnit: bottomWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
+                          textColor: textColor,
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   WeatherDetailsGrid(textColor: textColor),
                 ],
               ),
