@@ -26,6 +26,7 @@ dependencies:
   device_info_plus: ^11.3.0
   flutter_localizations:
     sdk: flutter
+  flag: ^7.0.0
 
 dev_dependencies:
   flutter_test:

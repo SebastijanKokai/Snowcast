@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flag/flag.dart';
 import '../cubit/locale_cubit.dart';
 
 class LanguageSelector extends StatelessWidget {
@@ -14,11 +15,35 @@ class LanguageSelector extends StatelessWidget {
           items: const [
             DropdownMenuItem(
               value: Locale('en'),
-              child: Text('English'),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flag.fromString(
+                    'GB',
+                    height: 20,
+                    width: 30,
+                    fit: BoxFit.fill,
+                  ),
+                  SizedBox(width: 8),
+                  Text('English'),
+                ],
+              ),
             ),
             DropdownMenuItem(
               value: Locale('sr'),
-              child: Text('Serbian'),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flag.fromString(
+                    'RS',
+                    height: 20,
+                    width: 30,
+                    fit: BoxFit.fill,
+                  ),
+                  SizedBox(width: 8),
+                  Text('Serbian'),
+                ],
+              ),
             ),
           ],
           onChanged: (Locale? newLocale) {
