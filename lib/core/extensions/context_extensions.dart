@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+extension BuildContextX on BuildContext {
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
+}
 
 extension TextThemeX on BuildContext {
   TextTheme get text => Theme.of(this).textTheme;
