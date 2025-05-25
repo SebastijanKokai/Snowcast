@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../extensions/context_extensions.dart';
 
 class AppBottomNavBar extends StatelessWidget {
   const AppBottomNavBar({required this.navigationShell, super.key});
@@ -8,27 +9,35 @@ class AppBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BottomNavigationBar(
       currentIndex: navigationShell.currentIndex,
       selectedFontSize: 12,
+      type: BottomNavigationBarType.fixed,
       onTap: (index) {
         navigationShell.goBranch(index);
       },
       items: [
         getTab(
-          label: 'Weather',
+          label: l10n.weather,
           activeAsset: Icons.cloud,
           asset: Icons.cloud_outlined,
         ),
         getTab(
-          label: 'Webcam',
+          label: l10n.webcam,
           activeAsset: Icons.camera,
           asset: Icons.camera_outlined,
         ),
         getTab(
-          label: 'Notifications',
+          label: l10n.notifications,
           activeAsset: Icons.notifications,
           asset: Icons.notifications_outlined,
+        ),
+        getTab(
+          label: l10n.settings,
+          activeAsset: Icons.settings,
+          asset: Icons.settings_outlined,
         ),
       ],
     );

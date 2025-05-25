@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:snowcast/core/navigation/scaffold_with_nav_bar.dart';
 import 'package:snowcast/core/router/routes.dart';
+import 'package:snowcast/features/settings/presentation/page/settings_page.dart';
 import 'package:snowcast/features/snow_notifications/presentation/page/notification_page.dart';
 import 'package:snowcast/features/weather/presentation/page/weather_page.dart';
 
@@ -38,6 +39,15 @@ final router = GoRouter(initialLocation: AppRoute.weather.path, routes: [
               path: AppRoute.notifications.path,
               name: AppRoute.notifications.name,
               builder: (context, state) => const NotificationPage(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: <RouteBase>[
+            GoRoute(
+              path: AppRoute.settings.path,
+              name: AppRoute.settings.name,
+              builder: (context, state) => const SettingsPage(),
             ),
           ],
         ),
