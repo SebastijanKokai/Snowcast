@@ -6,5 +6,12 @@
     "settings": "Settings",
     "language": "Language",
     "english": "English",
-    "serbian": "Serbian"
+    "serbian": "Serbian",
+    "snowNotifications": "Snow Notifications",
+    "selectMountains": "Select mountains to receive snow notifications",
+    "cancelNotifications": "Cancel Notifications",
+    "cancelNotificationsConfirmation": "Are you sure you want to stop receiving snow notifications?",
+    "no": "NO",
+    "yes": "YES",
+    "cancelNotificationsTooltip": "Cancel notifications"
 } 

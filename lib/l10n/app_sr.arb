@@ -6,5 +6,12 @@
     "settings": "Podešavanja",
     "language": "Jezik",
     "english": "Engleski",
-    "serbian": "Srpski"
+    "serbian": "Srpski",
+    "snowNotifications": "Obaveštenja o snegu",
+    "selectMountains": "Izaberite planine za koje želite da primate obaveštenja o snegu",
+    "cancelNotifications": "Otkaži obaveštenja",
+    "cancelNotificationsConfirmation": "Da li ste sigurni da želite da prestanete da primate obaveštenja o snegu?",
+    "no": "NE",
+    "yes": "DA",
+    "cancelNotificationsTooltip": "Otkaži obaveštenja"
 } 

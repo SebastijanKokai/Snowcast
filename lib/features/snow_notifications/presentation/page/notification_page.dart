@@ -48,9 +48,11 @@ class _NotificationsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Snow Notifications'),
+        title: Text(l10n.snowNotifications),
         actions: const [
           _CancelButton(),
         ],
@@ -72,7 +74,7 @@ class _NotificationsView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                'Select mountains to receive snow notifications',
+                l10n.selectMountains,
                 style: context.text.titleMedium,
               ),
             ),
@@ -97,22 +99,24 @@ class _CancelButton extends StatelessWidget {
   const _CancelButton();
 
   Future<void> _showConfirmationDialog(BuildContext context) async {
+    final l10n = context.l10n;
+
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Cancel Notifications'),
-        content: const Text('Are you sure you want to stop receiving snow notifications?'),
+        title: Text(l10n.cancelNotifications),
+        content: Text(l10n.cancelNotificationsConfirmation),
         actions: [
           TextButton(
             onPressed: () => context.pop(),
-            child: const Text('NO'),
+            child: Text(l10n.no),
           ),
           TextButton(
             onPressed: () => context.pop(true),
             style: TextButton.styleFrom(
               foregroundColor: context.colors.error,
             ),
-            child: const Text('YES'),
+            child: Text(l10n.yes),
           ),
         ],
       ),
@@ -125,10 +129,12 @@ class _CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return IconButton(
       onPressed: () => _showConfirmationDialog(context),
       icon: const Icon(Icons.notifications_off),
-      tooltip: 'Cancel notifications',
+      tooltip: l10n.cancelNotificationsTooltip,
       color: context.colors.error,
     );
   }
