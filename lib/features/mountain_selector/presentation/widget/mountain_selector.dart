@@ -4,6 +4,7 @@ import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_cubit.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
+import 'package:snowcast/features/localization/presentation/widgets/language_selector.dart';
 
 class MountainSelector extends StatelessWidget {
   const MountainSelector({required this.child, super.key});
@@ -44,7 +45,13 @@ class _DropdownContainer extends StatelessWidget {
       ),
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: _MountainDropDown(),
+        child: Row(
+          children: [
+            Expanded(child: _MountainDropDown()),
+            SizedBox(width: 16),
+            LanguageSelector(),
+          ],
+        ),
       ),
     );
   }

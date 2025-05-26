@@ -1,8 +1,7 @@
 enum AppRoute {
   weather('/', 'weather'),
   webcam('/webcam', 'webcam'),
-  notifications('/notifications', 'notifications'),
-  settings('/settings', 'settings');
+  notifications('/notifications', 'notifications');
 
   const AppRoute(this.path, this.name);
 

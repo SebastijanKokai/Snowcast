@@ -34,11 +34,6 @@ class AppBottomNavBar extends StatelessWidget {
           activeAsset: Icons.notifications,
           asset: Icons.notifications_outlined,
         ),
-        getTab(
-          label: l10n.settings,
-          activeAsset: Icons.settings,
-          asset: Icons.settings_outlined,
-        ),
       ],
     );
   }

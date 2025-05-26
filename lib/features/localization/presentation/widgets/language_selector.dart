@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flag/flag.dart';
+import 'package:snowcast/core/extensions/context_extensions.dart';
 import '../cubit/locale_cubit.dart';
 
 class LanguageSelector extends StatelessWidget {
@@ -8,48 +9,49 @@ class LanguageSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, state) {
-        return DropdownButton<Locale>(
-          value: state.locale,
-          items: const [
-            DropdownMenuItem(
-              value: Locale('en'),
+        return PopupMenuButton<Locale>(
+          icon: const Icon(Icons.language, size: 24),
+          tooltip: l10n.language,
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: const Locale('en'),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Flag.fromString(
+                  const Flag.fromString(
                     'GB',
-                    height: 20,
-                    width: 30,
+                    height: 16,
+                    width: 24,
                     fit: BoxFit.fill,
                   ),
-                  SizedBox(width: 8),
-                  Text('English'),
+                  const SizedBox(width: 8),
+                  Text(l10n.english),
                 ],
               ),
             ),
-            DropdownMenuItem(
-              value: Locale('sr'),
+            PopupMenuItem(
+              value: const Locale('sr'),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Flag.fromString(
+                  const Flag.fromString(
                     'RS',
-                    height: 20,
-                    width: 30,
+                    height: 16,
+                    width: 24,
                     fit: BoxFit.fill,
                   ),
-                  SizedBox(width: 8),
-                  Text('Serbian'),
+                  const SizedBox(width: 8),
+                  Text(l10n.serbian),
                 ],
               ),
             ),
           ],
-          onChanged: (Locale? newLocale) {
-            if (newLocale != null) {
-              context.read<LocaleCubit>().setLocale(newLocale);
-            }
+          onSelected: (Locale newLocale) {
+            context.read<LocaleCubit>().setLocale(newLocale);
           },
         );
       },
