@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flag/flag.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
-import '../cubit/locale_cubit.dart';
+import '../bloc/locale_cubit.dart';
 
 class LanguageSelector extends StatelessWidget {
   const LanguageSelector({super.key});

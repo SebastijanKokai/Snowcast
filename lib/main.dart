@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/app/app.dart';
 import 'package:snowcast/core/di/injection_container.dart';
-import 'package:snowcast/features/localization/presentation/cubit/locale_cubit.dart';
+import 'package:snowcast/features/localization/presentation/bloc/locale_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -17,7 +17,7 @@ import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
 import '../../features/localization/data/repositories/locale_repository_impl.dart';
 import '../../features/localization/domain/repositories/locale_repository.dart';
 import '../../features/localization/domain/usecases/locale_usecase.dart';
-import '../../features/localization/presentation/cubit/locale_cubit.dart';
+import '../../features/localization/presentation/bloc/locale_cubit.dart';
 
 final getIt = GetIt.instance;
 
