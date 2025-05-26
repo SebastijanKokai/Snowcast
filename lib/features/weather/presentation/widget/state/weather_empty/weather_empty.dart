@@ -6,6 +6,8 @@ class WeatherEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -17,7 +19,7 @@ class WeatherEmpty extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'No weather data available',
+            l10n.noWeatherData,
             style: context.text.titleLarge?.copyWith(
               color: context.colors.onSurfaceVariant,
             ),

@@ -13,5 +13,28 @@
     "cancelNotificationsConfirmation": "Are you sure you want to stop receiving snow notifications?",
     "no": "NO",
     "yes": "YES",
-    "cancelNotificationsTooltip": "Cancel notifications"
+    "cancelNotificationsTooltip": "Cancel notifications",
+    "noWeatherData": "No weather data available",
+    "errorLoadingWeather": "Error loading weather data",
+    "loadingWeather": "Loading weather data...",
+    "top": "Top",
+    "bottom": "Bottom",
+    "updated": "Updated: {date}",
+    "@updated": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "minMaxTop": "Min/Max (Top)",
+    "minMaxBottom": "Min/Max (Bottom)",
+    "precipitationTop": "Precipitation (Top)",
+    "precipitationBottom": "Precipitation (Bottom)",
+    "windSpeedTop": "Wind Speed (Top)",
+    "windSpeedBottom": "Wind Speed (Bottom)",
+    "uvIndexTop": "UV Index (Top)",
+    "uvIndexBottom": "UV Index (Bottom)",
+    "fogTop": "Fog (Top)",
+    "fogBottom": "Fog (Bottom)"
 } 

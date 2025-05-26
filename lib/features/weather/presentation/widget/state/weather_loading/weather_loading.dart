@@ -6,6 +6,8 @@ class WeatherLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -15,7 +17,7 @@ class WeatherLoading extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Loading weather data...',
+            l10n.loadingWeather,
             style: context.text.titleLarge?.copyWith(
               color: context.colors.onSurfaceVariant,
             ),

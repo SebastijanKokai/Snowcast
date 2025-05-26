@@ -13,5 +13,28 @@
     "cancelNotificationsConfirmation": "Da li ste sigurni da želite da prestanete da primate obaveštenja o snegu?",
     "no": "NE",
     "yes": "DA",
-    "cancelNotificationsTooltip": "Otkaži obaveštenja"
+    "cancelNotificationsTooltip": "Otkaži obaveštenja",
+    "noWeatherData": "Nema dostupnih podataka o vremenu",
+    "errorLoadingWeather": "Greška pri učitavanju podataka o vremenu",
+    "loadingWeather": "Učitavanje podataka o vremenu...",
+    "top": "Vrh",
+    "bottom": "Podnožje",
+    "updated": "Ažurirano: {date}",
+    "@updated": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "minMaxTop": "Min/Max (Vrh)",
+    "minMaxBottom": "Min/Max (Podnožje)",
+    "precipitationTop": "Padavine (Vrh)",
+    "precipitationBottom": "Padavine (Podnožje)",
+    "windSpeedTop": "Brzina vetra (Vrh)",
+    "windSpeedBottom": "Brzina vetra (Podnožje)",
+    "uvIndexTop": "UV indeks (Vrh)",
+    "uvIndexBottom": "UV indeks (Podnožje)",
+    "fogTop": "Magla (Vrh)",
+    "fogBottom": "Magla (Podnožje)"
 } 

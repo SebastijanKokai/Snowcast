@@ -11,6 +11,7 @@ class LocationHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final weatherState = context.read<WeatherCubit>().state;
     final topWeather = weatherState.topWeather;
     final bottomWeather = weatherState.bottomWeather;
@@ -32,7 +33,7 @@ class LocationHeader extends StatelessWidget {
           ],
         ),
         Text(
-          'Updated: ${DateFormat('dd.MM.yyyy.').format(DateTime.parse(topWeather.metadata.updatedAt))}',
+          l10n.updated(DateFormat('dd.MM.yyyy.').format(DateTime.parse(topWeather.metadata.updatedAt))),
           style: context.text.bodySmall?.copyWith(color: textColor),
         ),
       ],

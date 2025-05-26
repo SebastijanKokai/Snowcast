@@ -10,6 +10,7 @@ class WeatherDetailsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final weatherState = context.read<WeatherCubit>().state;
     final topWeather = weatherState.topWeather;
     final bottomWeather = weatherState.bottomWeather;
@@ -29,61 +30,61 @@ class WeatherDetailsGrid extends StatelessWidget {
         children: [
           WeatherDetail(
             icon: Icons.thermostat,
-            label: 'Min/Max (Top)',
+            label: l10n.minMaxTop,
             value: '${topDetails.airTemperatureMin}$tempUnit / ${topDetails.airTemperatureMax}$tempUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.thermostat,
-            label: 'Min/Max (Bottom)',
+            label: l10n.minMaxBottom,
             value: '${bottomDetails.airTemperatureMin}$tempUnit / ${bottomDetails.airTemperatureMax}$tempUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.water_drop,
-            label: 'Precipitation (Top)',
+            label: l10n.precipitationTop,
             value: '${topDetails.precipitationAmount}$precipitationUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.water_drop,
-            label: 'Precipitation (Bottom)',
+            label: l10n.precipitationBottom,
             value: '${bottomDetails.precipitationAmount}$precipitationUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.air,
-            label: 'Wind Speed (Top)',
+            label: l10n.windSpeedTop,
             value: '${topDetails.windSpeed}$windSpeedUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.air,
-            label: 'Wind Speed (Bottom)',
+            label: l10n.windSpeedBottom,
             value: '${bottomDetails.windSpeed}$windSpeedUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.wb_sunny,
-            label: 'UV Index (Top)',
+            label: l10n.uvIndexTop,
             value: '${topDetails.ultraVioletIndexClearSky}$ultraVioletIndexClearSkyUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.wb_sunny,
-            label: 'UV Index (Bottom)',
+            label: l10n.uvIndexBottom,
             value: '${bottomDetails.ultraVioletIndexClearSky}$ultraVioletIndexClearSkyUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.foggy,
-            label: 'Fog (Top)',
+            label: l10n.fogTop,
             value: '${topDetails.fogAreaFraction}$fogUnit',
             textColor: textColor,
           ),
           WeatherDetail(
             icon: Icons.foggy,
-            label: 'Fog (Bottom)',
+            label: l10n.fogBottom,
             value: '${bottomDetails.fogAreaFraction}$fogUnit',
             textColor: textColor,
           ),
