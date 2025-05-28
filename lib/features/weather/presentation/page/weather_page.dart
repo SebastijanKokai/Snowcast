@@ -57,26 +57,30 @@ class _WeatherViewState extends State<WeatherView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<MountainCubit, MountainState>(
-        listenWhen: (previous, current) => previous.selectedMountain != current.selectedMountain,
-        listener: (context, state) => _getWeather(context),
-        child: BlocListener<WeatherCubit, WeatherState>(
-          listenWhen: (previous, current) => previous.status != current.status,
-          listener: (context, state) => _setGradient(context, state),
-          child: BlocBuilder<WeatherCubit, WeatherState>(
-            builder: (context, state) {
-              switch (state.status) {
-                case WeatherStatus.initial:
-                  return const WeatherEmpty();
-                case WeatherStatus.loading:
-                  return const WeatherLoading();
-                case WeatherStatus.success:
-                  return const WeatherSuccess();
-                case WeatherStatus.failure:
-                  return WeatherError(text: state.error);
-              }
-            },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<MountainCubit, MountainState>(
+            listenWhen: (previous, current) => previous.selectedMountain != current.selectedMountain,
+            listener: (context, state) => _getWeather(context),
           ),
+          BlocListener<WeatherCubit, WeatherState>(
+            listenWhen: (previous, current) => previous.status != current.status,
+            listener: (context, state) => _setGradient(context, state),
+          ),
+        ],
+        child: BlocBuilder<WeatherCubit, WeatherState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case WeatherStatus.initial:
+                return const WeatherEmpty();
+              case WeatherStatus.loading:
+                return const WeatherLoading();
+              case WeatherStatus.success:
+                return const WeatherSuccess();
+              case WeatherStatus.failure:
+                return WeatherError(text: state.error);
+            }
+          },
         ),
       ),
     );
