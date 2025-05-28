@@ -33,13 +33,13 @@ class _DropdownContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: context.colors.surface,
+      decoration: const BoxDecoration(
+        color: Colors.transparent,
         boxShadow: [
           BoxShadow(
-            color: context.colors.shadow.withAlpha(26),
+            color: Colors.transparent,
             blurRadius: 4,
-            offset: const Offset(0, 2),
+            offset: Offset(0, 2),
           ),
         ],
       ),

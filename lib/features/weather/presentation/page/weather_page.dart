@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/di/injection_container.dart';
+import 'package:snowcast/core/extensions/weather_colors_extension.dart';
+import 'package:snowcast/core/theme/gradient_cubit/gradient_cubit.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_cubit.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
@@ -37,6 +39,15 @@ class _WeatherViewState extends State<WeatherView> {
         );
   }
 
+  void _setGradient(BuildContext context, WeatherState state) {
+    if (state.status != WeatherStatus.success) {
+      return;
+    }
+
+    final symbolCode = state.topWeather.timeseries.first.instant.symbolCode;
+    context.read<GradientCubit>().setGradient(symbolCode.weatherGradient);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -49,19 +60,23 @@ class _WeatherViewState extends State<WeatherView> {
       body: BlocListener<MountainCubit, MountainState>(
         listenWhen: (previous, current) => previous.selectedMountain != current.selectedMountain,
         listener: (context, state) => _getWeather(context),
-        child: BlocBuilder<WeatherCubit, WeatherState>(
-          builder: (context, state) {
-            switch (state.status) {
-              case WeatherStatus.initial:
-                return const WeatherEmpty();
-              case WeatherStatus.loading:
-                return const WeatherLoading();
-              case WeatherStatus.success:
-                return const WeatherSuccess();
-              case WeatherStatus.failure:
-                return WeatherError(text: state.error);
-            }
-          },
+        child: BlocListener<WeatherCubit, WeatherState>(
+          listenWhen: (previous, current) => previous.status != current.status,
+          listener: (context, state) => _setGradient(context, state),
+          child: BlocBuilder<WeatherCubit, WeatherState>(
+            builder: (context, state) {
+              switch (state.status) {
+                case WeatherStatus.initial:
+                  return const WeatherEmpty();
+                case WeatherStatus.loading:
+                  return const WeatherLoading();
+                case WeatherStatus.success:
+                  return const WeatherSuccess();
+                case WeatherStatus.failure:
+                  return WeatherError(text: state.error);
+              }
+            },
+          ),
         ),
       ),
     );

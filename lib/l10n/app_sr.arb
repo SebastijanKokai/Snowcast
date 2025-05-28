@@ -1,5 +1,6 @@
 {
     "@@locale": "sr",
+    "appTitle": "Snowcast",
     "weather": "Vreme",
     "webcam": "Web kamera",
     "notifications": "Obaveštenja",

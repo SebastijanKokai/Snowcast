@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:snowcast/core/theme/gradient_cubit/gradient_cubit.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:snowcast/core/services/shared_preferences_service.dart';
 import 'package:snowcast/core/services/workmanager_service.dart';
@@ -22,6 +23,7 @@ import '../../features/localization/presentation/bloc/locale_cubit.dart';
 final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+  await initializeGradientCubit();
   await initializeSharedPreferences();
   await initializeFlutterLocalNotifications();
   await initializeWorkmanager();
@@ -29,6 +31,10 @@ Future<void> initializeDependencies() async {
   await initializeWeatherDependencies();
   await initializeNotificationDependencies();
   await initializeLocalizationDependencies();
+}
+
+Future<void> initializeGradientCubit() async {
+  getIt.registerLazySingleton<GradientCubit>(() => GradientCubit());
 }
 
 Future<void> initializeSharedPreferences() async {

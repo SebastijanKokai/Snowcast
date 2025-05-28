@@ -17,70 +17,63 @@ class WeatherSuccess extends StatelessWidget {
     final weatherState = context.read<WeatherCubit>().state;
     final topWeather = weatherState.topWeather;
     final bottomWeather = weatherState.bottomWeather;
-    final symbolCode = topWeather.timeseries.first.instant.symbolCode;
-    final gradient = symbolCode.weatherGradient;
     final textColor = topWeather.timeseries.first.instant.symbolCode.textColor;
 
-    return Container(
-      decoration: BoxDecoration(
-        gradient: gradient,
-      ),
-      child: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            _WeatherMetaHeader(textColor: textColor),
-            const SizedBox(height: 16),
-            Expanded(
-              child: Center(
-                child: GlassContainer(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              child: WeatherSection(
-                                title: l10n.top,
-                                weatherDetails: topWeather.timeseries.first.instant,
-                                tempUnit: topWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
-                                textColor: textColor,
-                              ),
+    return SafeArea(
+      child: Column(
+        children: [
+          const SizedBox(height: 16),
+          _WeatherMetaHeader(textColor: textColor),
+          const SizedBox(height: 16),
+          Expanded(
+            child: Center(
+              child: GlassContainer(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            child: WeatherSection(
+                              title: l10n.top,
+                              weatherDetails: topWeather.timeseries.first.instant,
+                              tempUnit: topWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
+                              textColor: textColor,
                             ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: WeatherSection(
-                                title: l10n.bottom,
-                                weatherDetails: bottomWeather.timeseries.first.instant,
-                                tempUnit: bottomWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
-                                textColor: textColor,
-                              ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: WeatherSection(
+                              title: l10n.bottom,
+                              weatherDetails: bottomWeather.timeseries.first.instant,
+                              tempUnit: bottomWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F",
+                              textColor: textColor,
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        WeatherDetailsGrid(textColor: textColor),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      WeatherDetailsGrid(textColor: textColor),
+                    ],
                   ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              child: SizedBox(
-                width: double.infinity,
-                child: GlassButton(
-                  onPressed: () {},
-                  text: l10n.nineDayForecast,
-                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            child: SizedBox(
+              width: double.infinity,
+              child: GlassButton(
+                onPressed: () {},
+                text: l10n.nineDayForecast,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

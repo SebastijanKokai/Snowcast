@@ -15,6 +15,7 @@ class AppBottomNavBar extends StatelessWidget {
       currentIndex: navigationShell.currentIndex,
       selectedFontSize: 12,
       type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.transparent,
       onTap: (index) {
         navigationShell.goBranch(index);
       },

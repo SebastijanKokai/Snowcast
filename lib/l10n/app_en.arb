@@ -1,5 +1,6 @@
 {
     "@@locale": "en",
+    "appTitle": "Snowcast", 
     "weather": "Weather",
     "webcam": "Webcam",
     "notifications": "Notifications",

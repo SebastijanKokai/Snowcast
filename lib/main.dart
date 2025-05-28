@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/app/app.dart';
 import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/features/localization/presentation/bloc/locale_cubit.dart';
+import 'package:snowcast/core/theme/gradient_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +18,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<LocaleCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GradientCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<LocaleCubit>(),
+        ),
+      ],
       child: const App(),
     );
   }
