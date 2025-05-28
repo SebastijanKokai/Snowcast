@@ -40,5 +40,6 @@
     "windSpeed": "Wind Speed",
     "uvIndex": "UV Index",
     "fog": "Fog",
-    "nineDayForecast": "9-day forecast"
+    "nineDayForecast": "9-day forecast",
+    "updatedAt": "Updated at"
 } 

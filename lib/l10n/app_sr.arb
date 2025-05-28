@@ -40,5 +40,6 @@
     "windSpeed": "Brzina vetra",
     "uvIndex": "UV indeks",
     "fog": "Magla",
-    "nineDayForecast": "Prognoza za 9 dana"
+    "nineDayForecast": "Prognoza za 9 dana",
+    "updatedAt": "Ažurirano u"
 } 

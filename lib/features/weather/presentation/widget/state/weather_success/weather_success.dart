@@ -85,23 +85,19 @@ class _WeatherMetaHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final weatherState = context.read<WeatherCubit>().state;
     final topWeather = weatherState.topWeather;
     final bottomWeather = weatherState.bottomWeather;
     return Column(
       children: [
         Text(
-          '${topWeather.coordinates.latitude.toStringAsFixed(4)}, ${topWeather.coordinates.longitude.toStringAsFixed(4)}',
+          '${l10n.top}: ${topWeather.coordinates.altitude.toInt()} m   |   ${l10n.bottom}: ${bottomWeather.coordinates.altitude.toInt()} m',
           style: context.text.bodyMedium?.copyWith(color: textColor),
         ),
         const SizedBox(height: 4),
         Text(
-          'Top: ${topWeather.coordinates.altitude.toInt()} m   |   Bottom: ${bottomWeather.coordinates.altitude.toInt()} m',
-          style: context.text.bodyMedium?.copyWith(color: textColor),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          'Updated: ${topWeather.metadata.updatedAt}',
+          '${l10n.updatedAt}: ${topWeather.metadata.updatedAt}',
           style: context.text.bodySmall?.copyWith(color: textColor.withOpacity(0.8)),
         ),
       ],

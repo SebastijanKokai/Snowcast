@@ -31,7 +31,7 @@ class WeatherDetailsGrid extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
-          childAspectRatio: 0.85,
+          childAspectRatio: 0.9,
           padding: const EdgeInsets.all(12),
           children: [
             WeatherDetail(
