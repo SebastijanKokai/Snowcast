@@ -19,4 +19,48 @@ extension WeatherColorsX on String {
     if (contains('cloudy') || contains('partlycloudy')) return AppColors.cloudyText;
     return AppColors.defaultText;
   }
+
+  LinearGradient get weatherGradient {
+    if (contains('thunder')) {
+      return const LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [AppColors.thunderGradientTop, AppColors.thunderGradientBottom],
+      );
+    }
+    if (contains('snow')) {
+      return const LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [AppColors.snowGradientTop, AppColors.snowGradientBottom],
+      );
+    }
+    if (contains('rain') || contains('sleet')) {
+      return const LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [AppColors.rainGradientTop, AppColors.rainGradientBottom],
+      );
+    }
+    if (contains('fog')) {
+      return const LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [AppColors.cloudyGradientTop, AppColors.cloudyGradientBottom],
+      );
+    }
+    if (contains('cloudy') || contains('partlycloudy')) {
+      return const LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [AppColors.cloudyGradientTop, AppColors.cloudyGradientBottom],
+      );
+    }
+    // Default: clear
+    return const LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [AppColors.clearGradientTop, AppColors.clearGradientBottom],
+    );
+  }
 }

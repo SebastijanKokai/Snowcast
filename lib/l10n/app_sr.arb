@@ -27,14 +27,9 @@
             }
         }
     },
-    "minMaxTop": "Min/Max (Vrh)",
-    "minMaxBottom": "Min/Max (Podnožje)",
-    "precipitationTop": "Padavine (Vrh)",
-    "precipitationBottom": "Padavine (Podnožje)",
-    "windSpeedTop": "Brzina vetra (Vrh)",
-    "windSpeedBottom": "Brzina vetra (Podnožje)",
-    "uvIndexTop": "UV indeks (Vrh)",
-    "uvIndexBottom": "UV indeks (Podnožje)",
-    "fogTop": "Magla (Vrh)",
-    "fogBottom": "Magla (Podnožje)"
+    "temperature": "Temperatura",
+    "precipitation": "Padavine",
+    "windSpeed": "Brzina vetra",
+    "uvIndex": "UV indeks",
+    "fog": "Magla"
 } 

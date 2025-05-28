@@ -27,14 +27,9 @@
             }
         }
     },
-    "minMaxTop": "Min/Max (Top)",
-    "minMaxBottom": "Min/Max (Bottom)",
-    "precipitationTop": "Precipitation (Top)",
-    "precipitationBottom": "Precipitation (Bottom)",
-    "windSpeedTop": "Wind Speed (Top)",
-    "windSpeedBottom": "Wind Speed (Bottom)",
-    "uvIndexTop": "UV Index (Top)",
-    "uvIndexBottom": "UV Index (Bottom)",
-    "fogTop": "Fog (Top)",
-    "fogBottom": "Fog (Bottom)"
+    "temperature": "Temperature",
+    "precipitation": "Precipitation",
+    "windSpeed": "Wind Speed",
+    "uvIndex": "UV Index",
+    "fog": "Fog"
 } 
