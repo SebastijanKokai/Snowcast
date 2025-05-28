@@ -19,8 +19,8 @@ class WeatherDetailsGrid extends StatelessWidget {
     final topDetails = topWeather.timeseries.first.instant;
     final bottomDetails = bottomWeather.timeseries.first.instant;
     final tempUnit = topWeather.metadata.units.airTemperature == 'celsius' ? "°C" : "°F";
-    final precipitationUnit = topWeather.metadata.units.precipitationAmount;
-    final windSpeedUnit = topWeather.metadata.units.windSpeed;
+    final precipitationUnit = '\u2009${topWeather.metadata.units.precipitationAmount}';
+    final windSpeedUnit = '\u2009${topWeather.metadata.units.windSpeed}';
     final ultraVioletIndexClearSkyUnit = topWeather.metadata.units.ultraVioletIndexClearSky;
     final fogUnit = topWeather.metadata.units.fogAreaFraction;
 

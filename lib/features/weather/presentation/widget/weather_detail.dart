@@ -75,7 +75,7 @@ class _WeatherDetailContainer extends StatelessWidget {
 }
 
 class _WeatherDetailIcon extends StatelessWidget {
-  const _WeatherDetailIcon({required this.icon, required this.color, super.key});
+  const _WeatherDetailIcon({required this.icon, required this.color});
   final IconData icon;
   final Color color;
 
@@ -94,7 +94,7 @@ class _WeatherDetailIcon extends StatelessWidget {
 }
 
 class _WeatherDetailLabel extends StatelessWidget {
-  const _WeatherDetailLabel({required this.label, required this.color, super.key});
+  const _WeatherDetailLabel({required this.label, required this.color});
   final String label;
   final Color color;
 
