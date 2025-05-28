@@ -52,6 +52,7 @@ class _NotificationsView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(l10n.snowNotifications),
         actions: const [
           _CancelButton(),
