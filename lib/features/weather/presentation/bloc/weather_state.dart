@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:snowcast/core/error/weather_error_code.dart';
+import 'package:snowcast/core/error/app_error_code.dart';
 import 'package:snowcast/features/weather/domain/entity/weather.dart';
 
 enum WeatherStatus { initial, loading, success, failure }

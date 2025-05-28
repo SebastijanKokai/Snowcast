@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snowcast/core/error/weather_error_code.dart';
+import 'package:snowcast/core/error/app_error_code.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 
 class WeatherError extends StatelessWidget {
