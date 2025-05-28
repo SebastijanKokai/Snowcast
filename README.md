@@ -1,13 +1,19 @@
 # Snowcast
 
-A Flutter application that provides real-time weather information and webcam feeds for ski resorts and mountain locations.
+Snowcast sends snowfall notifications 9 days in advance, so you can plan your trips early. View live webcams from multiple mountains and check detailed weather data of mountains like top and bottom temperatures, snow accumulation, and fog.
 
 ## Features
+
+- **Snow Notifications**
+  - Get weather notifications up to 9 days in advance
+  - Plan your ski trips early with accurate weather forecasts
+  - Customize notification preferences for different mountain locations
 
 - **Weather Information**
   - Real-time weather data for both top and bottom altitudes of mountains
   - Detailed weather metrics including temperature, precipitation, wind speed, UV index, and fog conditions
   - Weather status indicators with appropriate color coding
+  - Dynamic gradient backgrounds that change based on weather conditions (snowy weather shows white gradients, sunny weather shows blue gradients, etc.)
 
 - **Mountain Selection**
   - Dropdown menu for selecting different mountain locations
@@ -17,24 +23,51 @@ A Flutter application that provides real-time weather information and webcam fee
   - Live webcam feeds from selected mountain locations
   - Loading and error states for webcam streams
 
-- **Snow Notifications** (Work in Progress)
-  - Stay informed about snow conditions and updates
-
 ## Project Structure
 
 ```
 lib/
 ├── core/                 # Core functionality and utilities
-│   ├── extensions/      # Dart extensions
-│   ├── navigation/      # Navigation components
-│   └── router/          # Route configuration
-├── features/            # Feature modules
+│   ├── app/            # App-wide configurations and setup
+│   ├── di/             # Dependency injection
+│   ├── error/          # Error handling and custom exceptions
+│   ├── extensions/     # Dart extensions
+│   ├── navigation/     # Navigation components
+│   ├── router/         # Route configuration
+│   ├── services/       # Core services
+│   ├── theme/          # App theming and styling
+│   ├── utils/          # Utility functions and helpers
+│   └── widget/         # Reusable widgets
+├── features/           # Feature modules
+│   ├── localization/   # Language selection and management
 │   ├── mountain_selector/  # Mountain selection functionality
-│   ├── weather/         # Weather information feature
-│   ├── webcam/          # Webcam integration
+│   ├── weather/        # Weather information feature
+│   ├── webcam/         # Webcam integration
 │   └── snow_notifications/ # Snow condition notifications
-└── main.dart            # Application entry point
+├── l10n/              # Localization
+│   ├── app_en.arb     # English translations
+│   └── app_sr.arb     # Serbian translations
+└── main.dart          # Application entry point
 ```
+
+## Features in Detail
+
+### Localization
+- Full support for English and Serbian languages
+- Automatic language detection based on device settings
+- Easy to add more languages in the future
+
+### Dynamic Weather UI
+- Beautiful gradient backgrounds that adapt to current weather conditions
+- Snowy conditions: White and light blue gradients
+- Sunny conditions: Blue and light yellow gradients
+- Rainy conditions: Dark blue and gray gradients
+- Cloudy conditions: Gray and light blue gradients
+
+### Snow Notifications
+- Receive notifications up to 9 days before your planned ski trip
+- Get alerts for snowfall predictions
+- Customize notification preferences for each mountain
 
 ## Getting Started
 
