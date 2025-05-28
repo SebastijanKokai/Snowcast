@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:snowcast/core/error/weather_error_code.dart';
 import 'package:snowcast/features/weather/domain/usecase/weather_usecase.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_state.dart';
 
@@ -31,7 +32,10 @@ class WeatherCubit extends Cubit<WeatherState> {
       ));
     } catch (e) {
       emit(
-        state.copyWith(status: WeatherStatus.failure, error: 'Something went wrong'),
+        state.copyWith(
+          status: WeatherStatus.failure,
+          errorCode: AppErrorCode.unknown,
+        ),
       );
     }
   }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:snowcast/core/error/weather_error_code.dart';
 import 'package:snowcast/features/weather/domain/entity/weather.dart';
 
 enum WeatherStatus { initial, loading, success, failure }
@@ -13,31 +14,31 @@ extension WeatherStatusX on WeatherStatus {
 class WeatherState extends Equatable {
   WeatherState({
     this.status = WeatherStatus.initial,
-    this.error = '',
     Weather? topWeather,
     Weather? bottomWeather,
+    this.errorCode = AppErrorCode.unknown,
   })  : topWeather = topWeather ?? Weather.empty,
         bottomWeather = bottomWeather ?? Weather.empty;
 
   final WeatherStatus status;
-  final String error;
   final Weather topWeather;
   final Weather bottomWeather;
+  final AppErrorCode errorCode;
 
   @override
-  List<Object?> get props => [status, error, topWeather, bottomWeather];
+  List<Object?> get props => [status, topWeather, bottomWeather, errorCode];
 
   WeatherState copyWith({
     WeatherStatus? status,
-    String? error,
     Weather? topWeather,
     Weather? bottomWeather,
+    AppErrorCode? errorCode,
   }) {
     return WeatherState(
       status: status ?? this.status,
-      error: error ?? this.error,
       topWeather: topWeather ?? this.topWeather,
       bottomWeather: bottomWeather ?? this.bottomWeather,
+      errorCode: errorCode ?? this.errorCode,
     );
   }
 }

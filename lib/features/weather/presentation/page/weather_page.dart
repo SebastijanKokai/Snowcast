@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/di/injection_container.dart';
+import 'package:snowcast/core/error/weather_error_code.dart';
 import 'package:snowcast/core/extensions/weather_colors_extension.dart';
 import 'package:snowcast/core/theme/gradient_cubit/gradient_cubit.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_cubit.dart';
@@ -78,7 +79,7 @@ class _WeatherViewState extends State<WeatherView> {
               case WeatherStatus.success:
                 return const WeatherSuccess();
               case WeatherStatus.failure:
-                return WeatherError(text: state.error);
+                return WeatherError(errorCode: state.errorCode);
             }
           },
         ),

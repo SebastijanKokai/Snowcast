@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:snowcast/core/error/weather_error_code.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 
 class WeatherError extends StatelessWidget {
   const WeatherError({
-    required this.text,
+    required this.errorCode,
     this.onRetry,
     super.key,
   });
 
-  final String text;
+  final AppErrorCode errorCode;
   final VoidCallback? onRetry;
 
   @override
@@ -22,7 +23,7 @@ class WeatherError extends StatelessWidget {
             const SizedBox(height: 24),
             _ErrorTitle(text: context.l10n.errorLoadingWeather),
             const SizedBox(height: 12),
-            _ErrorMessage(text: text),
+            _ErrorMessage(text: errorCode.getLocalizedMessage(context)),
             if (onRetry != null) ...[
               const SizedBox(height: 24),
               _RetryButton(onRetry: onRetry!),
