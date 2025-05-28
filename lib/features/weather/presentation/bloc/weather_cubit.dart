@@ -31,7 +31,7 @@ class WeatherCubit extends Cubit<WeatherState> {
       ));
     } catch (e) {
       emit(
-        state.copyWith(status: WeatherStatus.failure, error: 'WeatherCubit => $e'),
+        state.copyWith(status: WeatherStatus.failure, error: 'Something went wrong'),
       );
     }
   }

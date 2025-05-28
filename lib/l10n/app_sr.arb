@@ -18,6 +18,7 @@
     "noWeatherData": "Nema dostupnih podataka o vremenu",
     "errorLoadingWeather": "Greška pri učitavanju podataka o vremenu",
     "loadingWeather": "Učitavanje podataka o vremenu...",
+    "retry": "Pokušaj ponovo",
     "top": "Vrh",
     "bottom": "Podnožje",
     "updated": "Ažurirano: {date}",

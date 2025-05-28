@@ -18,6 +18,7 @@
     "noWeatherData": "No weather data available",
     "errorLoadingWeather": "Error loading weather data",
     "loadingWeather": "Loading weather data...",
+    "retry": "Retry",
     "top": "Top",
     "bottom": "Bottom",
     "updated": "Updated: {date}",

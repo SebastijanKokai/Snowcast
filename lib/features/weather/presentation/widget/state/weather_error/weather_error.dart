@@ -2,40 +2,130 @@ import 'package:flutter/material.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
 
 class WeatherError extends StatelessWidget {
-  const WeatherError({required this.text, super.key});
+  const WeatherError({
+    required this.text,
+    this.onRetry,
+    super.key,
+  });
+
+  final String text;
+  final VoidCallback? onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: _ErrorContainer(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const _ErrorIcon(),
+            const SizedBox(height: 24),
+            _ErrorTitle(text: context.l10n.errorLoadingWeather),
+            const SizedBox(height: 12),
+            _ErrorMessage(text: text),
+            if (onRetry != null) ...[
+              const SizedBox(height: 24),
+              _RetryButton(onRetry: onRetry!),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ErrorContainer extends StatelessWidget {
+  const _ErrorContainer({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: context.colors.surface.withAlpha(230),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: context.colors.shadow.withAlpha(25),
+            blurRadius: 12,
+            spreadRadius: 0,
+          ),
+        ],
+      ),
+      child: child,
+    );
+  }
+}
+
+class _ErrorIcon extends StatelessWidget {
+  const _ErrorIcon();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: context.colors.errorContainer.withAlpha(230),
+        shape: BoxShape.circle,
+      ),
+      child: Icon(
+        Icons.error_outline_rounded,
+        size: 48,
+        color: context.colors.error,
+      ),
+    );
+  }
+}
+
+class _ErrorTitle extends StatelessWidget {
+  const _ErrorTitle({required this.text});
 
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: context.colors.error,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            l10n.errorLoadingWeather,
-            style: context.text.titleLarge?.copyWith(
-              color: context.colors.error,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            text,
-            style: context.text.bodyMedium?.copyWith(
-              color: context.colors.error,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+    return Text(
+      text,
+      style: context.text.titleLarge?.copyWith(
+        color: context.colors.error,
+        fontWeight: FontWeight.w600,
       ),
+      textAlign: TextAlign.center,
+    );
+  }
+}
+
+class _ErrorMessage extends StatelessWidget {
+  const _ErrorMessage({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: context.text.bodyMedium?.copyWith(
+        color: context.colors.onSurfaceVariant,
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+}
+
+class _RetryButton extends StatelessWidget {
+  const _RetryButton({required this.onRetry});
+
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton.icon(
+      onPressed: onRetry,
+      icon: const Icon(Icons.refresh_rounded),
+      label: Text(context.l10n.retry),
     );
   }
 }
