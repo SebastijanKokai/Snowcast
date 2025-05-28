@@ -23,6 +23,37 @@ Snowcast sends snowfall notifications 9 days in advance, so you can plan your tr
   - Live webcam feeds from selected mountain locations
   - Loading and error states for webcam streams
 
+## Screenshots
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/screenshots/weather_page.jpg" alt="Weather Page" width="200"/>
+      <br>
+      <b>Weather Page</b>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/mountain_selection.jpg" alt="Mountain Selection" width="200"/>
+      <br>
+      <b>Mountain Selection</b>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/webcam_page.jpg" alt="Webcam Page" width="200"/>
+      <br>
+      <b>Webcam Page</b>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/snow_notifications_page.jpg" alt="Snow Notifications Page" width="200"/>
+      <br>
+      <b>Snow Notifications Page</b>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/snow_alert.jpg" alt="Snow Alert" width="200"/>
+      <br>
+      <b>Snow Alert</b>
+    </td>
+  </tr>
+</table>
+
 ## Project Structure
 
 ```
