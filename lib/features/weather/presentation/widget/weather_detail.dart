@@ -49,7 +49,7 @@ class WeatherDetail extends StatelessWidget {
 }
 
 class _WeatherDetailContainer extends StatelessWidget {
-  const _WeatherDetailContainer({required this.child, required this.color, super.key});
+  const _WeatherDetailContainer({required this.child, required this.color});
   final Widget child;
   final Color color;
 
@@ -58,16 +58,16 @@ class _WeatherDetailContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.55),
+        color: const Color.fromRGBO(255, 255, 255, 0.55),
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: Colors.black.withOpacity(0.07),
+            color: Color.fromRGBO(0, 0, 0, 0.07),
             blurRadius: 8,
-            offset: const Offset(0, 2),
+            offset: Offset(0, 2),
           ),
         ],
-        border: Border.all(color: Colors.white.withOpacity(0.18)),
+        border: Border.all(color: const Color.fromRGBO(0, 0, 0, 0.18)),
       ),
       child: child,
     );
@@ -84,8 +84,8 @@ class _WeatherDetailIcon extends StatelessWidget {
     return Container(
       width: 38,
       height: 38,
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.18),
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(255, 255, 255, 0.18),
         shape: BoxShape.circle,
       ),
       child: Icon(icon, size: 22, color: color),
@@ -103,7 +103,7 @@ class _WeatherDetailLabel extends StatelessWidget {
     return Text(
       label,
       textAlign: TextAlign.center,
-      style: context.text.labelSmall?.copyWith(color: color.withOpacity(0.85)),
+      style: context.text.labelSmall?.copyWith(color: const Color.fromRGBO(0, 0, 0, 0.85)),
     );
   }
 }
@@ -116,7 +116,6 @@ class _WeatherDetailValue extends StatelessWidget {
     required this.tempUnit,
     required this.value,
     required this.color,
-    super.key,
   });
   final bool isTemperature;
   final String maxValue;
@@ -159,7 +158,6 @@ class _WeatherTemperatureValue extends StatelessWidget {
     required this.tempUnit,
     required this.color,
     required this.textStyle,
-    super.key,
   });
   final String maxValue;
   final String minValue;
