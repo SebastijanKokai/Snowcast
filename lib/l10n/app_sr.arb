@@ -31,5 +31,6 @@
     "precipitation": "Padavine",
     "windSpeed": "Brzina vetra",
     "uvIndex": "UV indeks",
-    "fog": "Magla"
+    "fog": "Magla",
+    "nineDayForecast": "Prognoza za 9 dana"
 } 

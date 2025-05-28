@@ -18,21 +18,26 @@ class AppColors {
   static const defaultText = Color(0xFF1B5E20);
 
   // Gradient colors for weather background
-  static const gradientTop = Color(0xFFB3E0FF); // light sky blue
-  static const gradientBottom = Color(0xFF4A90E2); // deeper blue
+  static const gradientTop = Color(0xFFB3E0FF);
+  static const gradientBottom = Color(0xFF4A90E2);
 
-  static const thunderGradientTop = Color(0xFF485563); // dark blue-gray
-  static const thunderGradientBottom = Color(0xFF29323C); // very dark blue-gray
+  static const thunderGradientTop = Color(0xFF485563);
+  static const thunderGradientBottom = Color(0xFF29323C);
 
-  static const rainGradientTop = Color(0xFF74ABE2); // soft blue
-  static const rainGradientBottom = Color(0xFF5563DE); // deeper blue
+  static const rainGradientTop = Color(0xFF74ABE2);
+  static const rainGradientBottom = Color(0xFF5563DE);
 
-  static const snowGradientTop = Color(0xFFE0F7FA); // very light blue
-  static const snowGradientBottom = Color(0xFFB2EBF2); // light blue
+  static const snowGradientTop = Color(0xFFE0F7FA);
+  static const snowGradientBottom = Color(0xFFB2EBF2);
 
-  static const clearGradientTop = Color(0xFFB3E0FF); // light sky blue
-  static const clearGradientBottom = Color(0xFF4A90E2); // deeper blue
+  static const clearGradientTop = Color(0xFFB3E0FF);
+  static const clearGradientBottom = Color(0xFF4A90E2);
 
-  static const cloudyGradientTop = Color(0xFFE0E0E0); // light gray
-  static const cloudyGradientBottom = Color(0xFFB0BEC5); // medium gray
+  static const cloudyGradientTop = Color(0xFFE0E0E0);
+  static const cloudyGradientBottom = Color(0xFFB0BEC5);
+
+  // Glassmorphism colors
+  static const glassBackground = Color(0x59FFFFFF);
+  static const glassBorder = Color(0x40FFFFFF);
+  static const glassShadow = Color(0x14000000);
 }

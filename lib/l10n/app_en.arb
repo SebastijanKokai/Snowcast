@@ -31,5 +31,6 @@
     "precipitation": "Precipitation",
     "windSpeed": "Wind Speed",
     "uvIndex": "UV Index",
-    "fog": "Fog"
+    "fog": "Fog",
+    "nineDayForecast": "9-day forecast"
 } 

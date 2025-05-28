@@ -5,8 +5,8 @@ import 'package:snowcast/core/extensions/weather_colors_extension.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
 import 'package:snowcast/features/weather/presentation/widget/state/weather_success/weather_details.dart';
 import 'package:snowcast/features/weather/presentation/widget/state/weather_success/weather_section.dart';
-import 'package:snowcast/core/theme/app_colors.dart';
 import 'package:snowcast/core/widget/glass_container.dart';
+import 'package:snowcast/core/widget/glass_button.dart';
 
 class WeatherSuccess extends StatelessWidget {
   const WeatherSuccess({super.key});
@@ -19,7 +19,6 @@ class WeatherSuccess extends StatelessWidget {
     final bottomWeather = weatherState.bottomWeather;
     final symbolCode = topWeather.timeseries.first.instant.symbolCode;
     final gradient = symbolCode.weatherGradient;
-    final backgroundColor = topWeather.timeseries.first.instant.symbolCode.backgroundColor;
     final textColor = topWeather.timeseries.first.instant.symbolCode.textColor;
 
     return Container(
@@ -74,17 +73,9 @@ class WeatherSuccess extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               child: SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                child: GlassButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.defaultBackground,
-                    foregroundColor: AppColors.defaultText,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: const Text('9-day forecast'),
+                  text: l10n.nineDayForecast,
                 ),
               ),
             ),

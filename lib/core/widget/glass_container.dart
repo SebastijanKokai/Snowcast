@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:snowcast/core/theme/app_colors.dart';
 
 class GlassContainer extends StatelessWidget {
   const GlassContainer({
@@ -7,11 +8,11 @@ class GlassContainer extends StatelessWidget {
     this.borderRadius = 24,
     this.margin = const EdgeInsets.symmetric(horizontal: 16),
     this.blurSigma = 16,
-    this.backgroundColor = const Color(0x59FFFFFF),
-    this.borderColor = const Color(0x40FFFFFF),
+    this.backgroundColor = AppColors.glassBackground,
+    this.borderColor = AppColors.glassBorder,
     this.boxShadow = const [
       BoxShadow(
-        color: Color(0x14000000),
+        color: AppColors.glassShadow,
         blurRadius: 12,
         offset: Offset(0, 4),
       ),
