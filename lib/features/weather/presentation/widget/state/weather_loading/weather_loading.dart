@@ -51,7 +51,7 @@ class _WeatherLoadingState extends State<WeatherLoading> with SingleTickerProvid
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: context.colors.primary.withOpacity(0.2),
+                    color: context.colors.primary.withAlpha(51),
                     blurRadius: 8,
                     spreadRadius: 2,
                   ),
