@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snowcast/core/extensions/context_extensions.dart';
+import 'package:snowcast/core/extensions/date_format_extensions.dart';
 import 'package:snowcast/core/extensions/weather_colors_extension.dart';
 import 'package:snowcast/features/weather/presentation/bloc/weather_cubit.dart';
 import 'package:snowcast/features/weather/presentation/widget/state/weather_success/weather_details.dart';
@@ -97,7 +98,7 @@ class _WeatherMetaHeader extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          '${l10n.updatedAt}: ${topWeather.metadata.updatedAt}',
+          '${l10n.updatedAt}: ${topWeather.metadata.updatedAt.toFormattedDateTime()}',
           style: context.text.bodySmall?.copyWith(color: textColor.withOpacity(0.8)),
         ),
       ],
