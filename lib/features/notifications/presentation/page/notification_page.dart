@@ -6,8 +6,8 @@ import 'package:snowcast/core/di/injection_container.dart';
 import 'package:snowcast/core/utils/permission_utils.dart';
 import 'package:snowcast/core/utils/plaform_utils.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
-import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_cubit.dart';
-import 'package:snowcast/features/snow_notifications/presentation/bloc/notification_state.dart';
+import 'package:snowcast/features/notifications/presentation/bloc/notification_cubit.dart';
+import 'package:snowcast/features/notifications/presentation/bloc/notification_state.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});

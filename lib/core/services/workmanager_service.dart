@@ -5,11 +5,11 @@ import 'package:workmanager/workmanager.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snowcast/core/services/shared_preferences_service.dart';
-import 'package:snowcast/features/snow_notifications/data/provider/notification_provider.dart';
-import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
+import 'package:snowcast/features/notifications/data/provider/notification_provider.dart';
+import 'package:snowcast/features/notifications/data/repository/notification_repository.dart';
 import 'package:snowcast/features/weather/data/provider/remote_weather_provider.dart';
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
-import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
+import 'package:snowcast/features/notifications/domain/usecase/notification_usecase.dart';
 
 const String _checkSnowfallTask = 'checkSnowfallTask';
 

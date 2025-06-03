@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:snowcast/core/navigation/scaffold_with_nav_bar.dart';
 import 'package:snowcast/core/router/routes.dart';
-import 'package:snowcast/features/snow_notifications/presentation/page/notification_page.dart';
+import 'package:snowcast/features/notifications/presentation/page/notification_page.dart';
 import 'package:snowcast/features/weather/presentation/page/weather_page.dart';
 import 'package:snowcast/features/webcam/presentation/page/webcam_page.dart';
 

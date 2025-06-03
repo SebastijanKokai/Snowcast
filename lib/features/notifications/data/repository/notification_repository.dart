@@ -1,5 +1,5 @@
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
-import 'package:snowcast/features/snow_notifications/data/provider/notification_provider.dart';
+import 'package:snowcast/features/notifications/data/provider/notification_provider.dart';
 
 class NotificationRepository {
   NotificationRepository(this._provider);

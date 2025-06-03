@@ -1,5 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:snowcast/features/snow_notifications/data/repository/notification_repository.dart';
+import 'package:snowcast/features/notifications/data/repository/notification_repository.dart';
 import 'package:snowcast/features/weather/data/repository/weather_repository.dart';
 import 'package:snowcast/features/weather/domain/entity/weather.dart';
 import 'package:workmanager/workmanager.dart';
