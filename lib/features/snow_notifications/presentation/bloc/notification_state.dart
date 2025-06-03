@@ -1,12 +1,17 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart';
 
-part 'notification_state.freezed.dart';
+class NotificationState {
+  const NotificationState({
+    this.selectedMountains = const {},
+    this.error = '',
+  });
 
-@freezed
-class NotificationState with _$NotificationState {
-  factory NotificationState({
-    @Default({}) Map<Mountain, bool> selectedMountains,
-    @Default('') String error,
-  }) = _NotificationState;
+  final Map<Mountain, bool> selectedMountains;
+  final String error;
+
+  NotificationState copyWith({
+    Map<Mountain, bool>? selectedMountains,
+    String? error,
+  }) =>
+      NotificationState(selectedMountains: selectedMountains ?? this.selectedMountains, error: error ?? this.error);
 }

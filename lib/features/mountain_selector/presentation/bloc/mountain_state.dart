@@ -1,7 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'mountain_state.freezed.dart';
-
 enum Mountain {
   jahorina(
     "Jahorina",
@@ -85,9 +81,15 @@ enum Mountain {
   );
 }
 
-@freezed
-class MountainState with _$MountainState {
-  factory MountainState({
-    @Default(Mountain.jahorina) Mountain selectedMountain,
-  }) = _MountainState;
+class MountainState {
+  MountainState({
+    this.selectedMountain = Mountain.jahorina,
+  });
+
+  final Mountain selectedMountain;
+
+  MountainState copyWith({
+    Mountain? selectedMountain,
+  }) =>
+      MountainState(selectedMountain: selectedMountain ?? this.selectedMountain);
 }

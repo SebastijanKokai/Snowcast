@@ -1,16 +1,18 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'webcam_state.freezed.dart';
-
 enum WebcamStatus {
   initial,
   loading,
   loaded,
 }
 
-@freezed
-class WebcamState with _$WebcamState {
-  factory WebcamState({
-    @Default(WebcamStatus.initial) WebcamStatus status,
-  }) = _WebcamState;
+class WebcamState {
+  const WebcamState({
+    this.status = WebcamStatus.initial,
+  });
+
+  final WebcamStatus status;
+
+  WebcamState copyWith({
+    WebcamStatus? status,
+  }) =>
+      WebcamState(status: status ?? this.status);
 }

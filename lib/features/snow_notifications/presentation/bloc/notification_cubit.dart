@@ -4,7 +4,7 @@ import 'package:snowcast/features/snow_notifications/presentation/bloc/notificat
 import 'package:snowcast/features/snow_notifications/domain/usecase/notification_usecase.dart';
 
 class NotificationCubit extends Cubit<NotificationState> {
-  NotificationCubit(this._notificationUsecase) : super(NotificationState()) {
+  NotificationCubit(this._notificationUsecase) : super(const NotificationState()) {
     _loadPreferences();
   }
 
@@ -16,7 +16,7 @@ class NotificationCubit extends Cubit<NotificationState> {
       await _notificationUsecase.startBackgroundChecks();
       emit(NotificationState(selectedMountains: preferences));
     } catch (e) {
-      emit(NotificationState());
+      emit(const NotificationState());
     }
   }
 
