@@ -27,6 +27,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flag: ^7.0.0
+  json_annotation: ^4.9.0
+  json_serializable: ^6.7.1
+
 
 dev_dependencies:
   flutter_test:
