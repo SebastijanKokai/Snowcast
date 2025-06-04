@@ -88,7 +88,6 @@ lib/
 
 ### Localization
 - Full support for English and Serbian languages
-- Automatic language detection based on device settings
 - Easy to add more languages in the future
 
 ### Dynamic Weather UI
