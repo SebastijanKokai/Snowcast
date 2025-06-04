@@ -40,12 +40,12 @@ class _WebcamViewState extends State<WebcamView> {
       listener: (context, state) {
         _isInitialLoad = true;
         context.read<WebcamCubit>().setLoading();
-        _controller?.loadUrl(urlRequest: URLRequest(url: WebUri(state.selectedMountain.webcamUrl)));
+        _controller?.loadUrl(urlRequest: URLRequest(url: WebUri(state.selectedMountain?.webcamUrl ?? '')));
       },
       child: Stack(
         children: [
           InAppWebView(
-            initialUrlRequest: URLRequest(url: WebUri(mountainState.selectedMountain.webcamUrl)),
+            initialUrlRequest: URLRequest(url: WebUri(mountainState.selectedMountain?.webcamUrl ?? '')),
             onWebViewCreated: (controller) {
               _controller = controller;
               context.read<WebcamCubit>().setLoading();

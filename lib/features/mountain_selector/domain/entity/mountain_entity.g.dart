@@ -8,6 +8,7 @@ part of 'mountain_entity.dart';
 
 MountainEntity _$MountainEntityFromJson(Map<String, dynamic> json) =>
     MountainEntity(
+      id: json['id'] as String,
       name: json['name'] as String,
       topAltitude: (json['topAltitude'] as num).toInt(),
       bottomAltitude: (json['bottomAltitude'] as num).toInt(),
@@ -18,6 +19,7 @@ MountainEntity _$MountainEntityFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MountainEntityToJson(MountainEntity instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'topAltitude': instance.topAltitude,
       'bottomAltitude': instance.bottomAltitude,

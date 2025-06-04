@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 @JsonSerializable()
 class MountainDto {
   const MountainDto({
+    required this.id,
     required this.name,
     required this.topAltitude,
     required this.bottomAltitude,
@@ -11,6 +12,7 @@ class MountainDto {
     required this.webcamUrl,
   });
 
+  final String id;
   final String name;
   final int topAltitude;
   final int bottomAltitude;
@@ -19,6 +21,7 @@ class MountainDto {
   final String webcamUrl;
 
   MountainDto copyWith({
+    String? id,
     String? name,
     int? topAltitude,
     int? bottomAltitude,
@@ -27,10 +30,12 @@ class MountainDto {
     String? webcamUrl,
   }) =>
       MountainDto(
-          name: name ?? this.name,
-          topAltitude: topAltitude ?? this.topAltitude,
-          bottomAltitude: bottomAltitude ?? this.bottomAltitude,
-          latitude: latitude ?? this.latitude,
-          longitude: longitude ?? this.longitude,
-          webcamUrl: webcamUrl ?? this.webcamUrl);
+        id: id ?? this.id,
+        name: name ?? this.name,
+        topAltitude: topAltitude ?? this.topAltitude,
+        bottomAltitude: bottomAltitude ?? this.bottomAltitude,
+        latitude: latitude ?? this.latitude,
+        longitude: longitude ?? this.longitude,
+        webcamUrl: webcamUrl ?? this.webcamUrl,
+      );
 }

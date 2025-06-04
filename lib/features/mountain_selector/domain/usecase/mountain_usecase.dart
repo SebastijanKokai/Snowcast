@@ -10,7 +10,7 @@ class MountainUsecase {
     return _repository.getMountains();
   }
 
-  MountainEntity getMountainByName(String name) {
-    return _repository.getMountainByName(name);
+  MountainEntity getMountainById(String id) {
+    return _repository.getMountainById(id);
   }
 }

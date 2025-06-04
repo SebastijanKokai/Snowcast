@@ -5,17 +5,24 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:flutter_local_notifications/src/flutter_local_notifications_plugin.dart' as _i3;
-import 'package:flutter_local_notifications/src/initialization_settings.dart' as _i5;
-import 'package:flutter_local_notifications/src/notification_details.dart' as _i7;
-import 'package:flutter_local_notifications/src/platform_specifics/android/schedule_mode.dart' as _i9;
+import 'package:flutter_local_notifications/src/flutter_local_notifications_plugin.dart'
+    as _i3;
+import 'package:flutter_local_notifications/src/initialization_settings.dart'
+    as _i5;
+import 'package:flutter_local_notifications/src/notification_details.dart'
+    as _i7;
+import 'package:flutter_local_notifications/src/platform_specifics/android/schedule_mode.dart'
+    as _i9;
 import 'package:flutter_local_notifications/src/types.dart' as _i10;
 import 'package:flutter_local_notifications_platform_interface/flutter_local_notifications_platform_interface.dart'
     as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart' as _i12;
-import 'package:snowcast/features/notifications/data/repository/notification_repository.dart' as _i11;
-import 'package:snowcast/features/weather/data/repository/weather_repository.dart' as _i13;
+import 'package:snowcast/features/mountain_selector/presentation/bloc/mountain_state.dart'
+    as _i12;
+import 'package:snowcast/features/notifications/data/repository/notification_repository.dart'
+    as _i11;
+import 'package:snowcast/features/weather/data/repository/weather_repository.dart'
+    as _i13;
 import 'package:snowcast/features/weather/domain/entity/weather.dart' as _i2;
 import 'package:timezone/timezone.dart' as _i8;
 import 'package:workmanager/src/options.dart' as _i15;
@@ -36,13 +43,15 @@ import 'package:workmanager/src/workmanager.dart' as _i14;
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeWeather_0 extends _i1.SmartFake implements _i2.Weather {
-  _FakeWeather_0(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+  _FakeWeather_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [FlutterLocalNotificationsPlugin].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFlutterLocalNotificationsPlugin extends _i1.Mock implements _i3.FlutterLocalNotificationsPlugin {
+class MockFlutterLocalNotificationsPlugin extends _i1.Mock
+    implements _i3.FlutterLocalNotificationsPlugin {
   MockFlutterLocalNotificationsPlugin() {
     _i1.throwOnMissingStub(this);
   }
@@ -50,26 +59,34 @@ class MockFlutterLocalNotificationsPlugin extends _i1.Mock implements _i3.Flutte
   @override
   _i4.Future<bool?> initialize(
     _i5.InitializationSettings? initializationSettings, {
-    _i6.DidReceiveNotificationResponseCallback? onDidReceiveNotificationResponse,
-    _i6.DidReceiveBackgroundNotificationResponseCallback? onDidReceiveBackgroundNotificationResponse,
+    _i6.DidReceiveNotificationResponseCallback?
+    onDidReceiveNotificationResponse,
+    _i6.DidReceiveBackgroundNotificationResponseCallback?
+    onDidReceiveBackgroundNotificationResponse,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #initialize,
-          [initializationSettings],
-          {
-            #onDidReceiveNotificationResponse: onDidReceiveNotificationResponse,
-            #onDidReceiveBackgroundNotificationResponse: onDidReceiveBackgroundNotificationResponse,
-          },
-        ),
-        returnValue: _i4.Future<bool?>.value(),
-      ) as _i4.Future<bool?>);
+            Invocation.method(
+              #initialize,
+              [initializationSettings],
+              {
+                #onDidReceiveNotificationResponse:
+                    onDidReceiveNotificationResponse,
+                #onDidReceiveBackgroundNotificationResponse:
+                    onDidReceiveBackgroundNotificationResponse,
+              },
+            ),
+            returnValue: _i4.Future<bool?>.value(),
+          )
+          as _i4.Future<bool?>);
 
   @override
-  _i4.Future<_i6.NotificationAppLaunchDetails?> getNotificationAppLaunchDetails() => (super.noSuchMethod(
-        Invocation.method(#getNotificationAppLaunchDetails, []),
-        returnValue: _i4.Future<_i6.NotificationAppLaunchDetails?>.value(),
-      ) as _i4.Future<_i6.NotificationAppLaunchDetails?>);
+  _i4.Future<_i6.NotificationAppLaunchDetails?>
+  getNotificationAppLaunchDetails() =>
+      (super.noSuchMethod(
+            Invocation.method(#getNotificationAppLaunchDetails, []),
+            returnValue: _i4.Future<_i6.NotificationAppLaunchDetails?>.value(),
+          )
+          as _i4.Future<_i6.NotificationAppLaunchDetails?>);
 
   @override
   _i4.Future<void> show(
@@ -80,28 +97,33 @@ class MockFlutterLocalNotificationsPlugin extends _i1.Mock implements _i3.Flutte
     String? payload,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #show,
-          [id, title, body, notificationDetails],
-          {#payload: payload},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #show,
+              [id, title, body, notificationDetails],
+              {#payload: payload},
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> cancel(int? id, {String? tag}) => (super.noSuchMethod(
-        Invocation.method(#cancel, [id], {#tag: tag}),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> cancel(int? id, {String? tag}) =>
+      (super.noSuchMethod(
+            Invocation.method(#cancel, [id], {#tag: tag}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> cancelAll() => (super.noSuchMethod(
-        Invocation.method(#cancelAll, []),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> cancelAll() =>
+      (super.noSuchMethod(
+            Invocation.method(#cancelAll, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> zonedSchedule(
@@ -115,18 +137,19 @@ class MockFlutterLocalNotificationsPlugin extends _i1.Mock implements _i3.Flutte
     _i10.DateTimeComponents? matchDateTimeComponents,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #zonedSchedule,
-          [id, title, body, scheduledDate, notificationDetails],
-          {
-            #androidScheduleMode: androidScheduleMode,
-            #payload: payload,
-            #matchDateTimeComponents: matchDateTimeComponents,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #zonedSchedule,
+              [id, title, body, scheduledDate, notificationDetails],
+              {
+                #androidScheduleMode: androidScheduleMode,
+                #payload: payload,
+                #matchDateTimeComponents: matchDateTimeComponents,
+              },
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> periodicallyShow(
@@ -139,14 +162,15 @@ class MockFlutterLocalNotificationsPlugin extends _i1.Mock implements _i3.Flutte
     String? payload,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #periodicallyShow,
-          [id, title, body, repeatInterval, notificationDetails],
-          {#androidScheduleMode: androidScheduleMode, #payload: payload},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #periodicallyShow,
+              [id, title, body, repeatInterval, notificationDetails],
+              {#androidScheduleMode: androidScheduleMode, #payload: payload},
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> periodicallyShowWithDuration(
@@ -155,58 +179,79 @@ class MockFlutterLocalNotificationsPlugin extends _i1.Mock implements _i3.Flutte
     String? body,
     Duration? repeatDurationInterval,
     _i7.NotificationDetails? notificationDetails, {
-    _i9.AndroidScheduleMode? androidScheduleMode = _i9.AndroidScheduleMode.exact,
+    _i9.AndroidScheduleMode? androidScheduleMode =
+        _i9.AndroidScheduleMode.exact,
     String? payload,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #periodicallyShowWithDuration,
-          [id, title, body, repeatDurationInterval, notificationDetails],
-          {#androidScheduleMode: androidScheduleMode, #payload: payload},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #periodicallyShowWithDuration,
+              [id, title, body, repeatDurationInterval, notificationDetails],
+              {#androidScheduleMode: androidScheduleMode, #payload: payload},
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<List<_i6.PendingNotificationRequest>> pendingNotificationRequests() => (super.noSuchMethod(
-        Invocation.method(#pendingNotificationRequests, []),
-        returnValue: _i4.Future<List<_i6.PendingNotificationRequest>>.value(
-          <_i6.PendingNotificationRequest>[],
-        ),
-      ) as _i4.Future<List<_i6.PendingNotificationRequest>>);
+  _i4.Future<List<_i6.PendingNotificationRequest>>
+  pendingNotificationRequests() =>
+      (super.noSuchMethod(
+            Invocation.method(#pendingNotificationRequests, []),
+            returnValue: _i4.Future<List<_i6.PendingNotificationRequest>>.value(
+              <_i6.PendingNotificationRequest>[],
+            ),
+          )
+          as _i4.Future<List<_i6.PendingNotificationRequest>>);
 
   @override
-  _i4.Future<List<_i6.ActiveNotification>> getActiveNotifications() => (super.noSuchMethod(
-        Invocation.method(#getActiveNotifications, []),
-        returnValue: _i4.Future<List<_i6.ActiveNotification>>.value(
-          <_i6.ActiveNotification>[],
-        ),
-      ) as _i4.Future<List<_i6.ActiveNotification>>);
+  _i4.Future<List<_i6.ActiveNotification>> getActiveNotifications() =>
+      (super.noSuchMethod(
+            Invocation.method(#getActiveNotifications, []),
+            returnValue: _i4.Future<List<_i6.ActiveNotification>>.value(
+              <_i6.ActiveNotification>[],
+            ),
+          )
+          as _i4.Future<List<_i6.ActiveNotification>>);
 }
 
 /// A class which mocks [NotificationRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNotificationRepository extends _i1.Mock implements _i11.NotificationRepository {
+class MockNotificationRepository extends _i1.Mock
+    implements _i11.NotificationRepository {
   MockNotificationRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<Map<_i12.Mountain, bool>> getPreferences() => (super.noSuchMethod(
-        Invocation.method(#getPreferences, []),
-        returnValue: _i4.Future<Map<_i12.Mountain, bool>>.value(
-          <_i12.Mountain, bool>{},
-        ),
-      ) as _i4.Future<Map<_i12.Mountain, bool>>);
+  _i4.Future<Map<_i12.Mountain, bool>> getPreferences() =>
+      (super.noSuchMethod(
+            Invocation.method(#getPreferences, []),
+            returnValue: _i4.Future<Map<_i12.Mountain, bool>>.value(
+              <_i12.Mountain, bool>{},
+            ),
+          )
+          as _i4.Future<Map<_i12.Mountain, bool>>);
 
   @override
-  _i4.Future<void> savePreferences(Map<_i12.Mountain, bool>? preferences) => (super.noSuchMethod(
-        Invocation.method(#savePreferences, [preferences]),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> savePreferences(Map<_i12.Mountain, bool>? preferences) =>
+      (super.noSuchMethod(
+            Invocation.method(#savePreferences, [preferences]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> clearPreferences() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearPreferences, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 }
 
 /// A class which mocks [WeatherRepository].
@@ -224,22 +269,23 @@ class MockWeatherRepository extends _i1.Mock implements _i13.WeatherRepository {
     required String? alt,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(#getWeather, [], {
-          #lat: lat,
-          #lon: lon,
-          #alt: alt,
-        }),
-        returnValue: _i4.Future<_i2.Weather>.value(
-          _FakeWeather_0(
-            this,
             Invocation.method(#getWeather, [], {
               #lat: lat,
               #lon: lon,
               #alt: alt,
             }),
-          ),
-        ),
-      ) as _i4.Future<_i2.Weather>);
+            returnValue: _i4.Future<_i2.Weather>.value(
+              _FakeWeather_0(
+                this,
+                Invocation.method(#getWeather, [], {
+                  #lat: lat,
+                  #lon: lon,
+                  #alt: alt,
+                }),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Weather>);
 }
 
 /// A class which mocks [Workmanager].
@@ -251,7 +297,8 @@ class MockWorkmanager extends _i1.Mock implements _i14.Workmanager {
   }
 
   @override
-  void executeTask(_i14.BackgroundTaskHandler? backgroundTask) => super.noSuchMethod(
+  void executeTask(_i14.BackgroundTaskHandler? backgroundTask) =>
+      super.noSuchMethod(
         Invocation.method(#executeTask, [backgroundTask]),
         returnValueForMissingStub: null,
       );
@@ -262,14 +309,15 @@ class MockWorkmanager extends _i1.Mock implements _i14.Workmanager {
     bool? isInDebugMode = false,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #initialize,
-          [callbackDispatcher],
-          {#isInDebugMode: isInDebugMode},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #initialize,
+              [callbackDispatcher],
+              {#isInDebugMode: isInDebugMode},
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> registerOneOffTask(
@@ -285,23 +333,24 @@ class MockWorkmanager extends _i1.Mock implements _i14.Workmanager {
     Map<String, dynamic>? inputData,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #registerOneOffTask,
-          [uniqueName, taskName],
-          {
-            #tag: tag,
-            #existingWorkPolicy: existingWorkPolicy,
-            #initialDelay: initialDelay,
-            #constraints: constraints,
-            #backoffPolicy: backoffPolicy,
-            #backoffPolicyDelay: backoffPolicyDelay,
-            #outOfQuotaPolicy: outOfQuotaPolicy,
-            #inputData: inputData,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #registerOneOffTask,
+              [uniqueName, taskName],
+              {
+                #tag: tag,
+                #existingWorkPolicy: existingWorkPolicy,
+                #initialDelay: initialDelay,
+                #constraints: constraints,
+                #backoffPolicy: backoffPolicy,
+                #backoffPolicyDelay: backoffPolicyDelay,
+                #outOfQuotaPolicy: outOfQuotaPolicy,
+                #inputData: inputData,
+              },
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> registerPeriodicTask(
@@ -318,43 +367,50 @@ class MockWorkmanager extends _i1.Mock implements _i14.Workmanager {
     Map<String, dynamic>? inputData,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #registerPeriodicTask,
-          [uniqueName, taskName],
-          {
-            #frequency: frequency,
-            #tag: tag,
-            #existingWorkPolicy: existingWorkPolicy,
-            #initialDelay: initialDelay,
-            #constraints: constraints,
-            #backoffPolicy: backoffPolicy,
-            #backoffPolicyDelay: backoffPolicyDelay,
-            #outOfQuotaPolicy: outOfQuotaPolicy,
-            #inputData: inputData,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(
+              #registerPeriodicTask,
+              [uniqueName, taskName],
+              {
+                #frequency: frequency,
+                #tag: tag,
+                #existingWorkPolicy: existingWorkPolicy,
+                #initialDelay: initialDelay,
+                #constraints: constraints,
+                #backoffPolicy: backoffPolicy,
+                #backoffPolicyDelay: backoffPolicyDelay,
+                #outOfQuotaPolicy: outOfQuotaPolicy,
+                #inputData: inputData,
+              },
+            ),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> cancelByUniqueName(String? uniqueName) => (super.noSuchMethod(
-        Invocation.method(#cancelByUniqueName, [uniqueName]),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> cancelByUniqueName(String? uniqueName) =>
+      (super.noSuchMethod(
+            Invocation.method(#cancelByUniqueName, [uniqueName]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> cancelByTag(String? tag) => (super.noSuchMethod(
-        Invocation.method(#cancelByTag, [tag]),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> cancelByTag(String? tag) =>
+      (super.noSuchMethod(
+            Invocation.method(#cancelByTag, [tag]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> cancelAll() => (super.noSuchMethod(
-        Invocation.method(#cancelAll, []),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> cancelAll() =>
+      (super.noSuchMethod(
+            Invocation.method(#cancelAll, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 }

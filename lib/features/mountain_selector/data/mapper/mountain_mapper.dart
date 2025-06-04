@@ -4,6 +4,7 @@ import 'package:snowcast/features/mountain_selector/domain/entity/mountain_entit
 extension MountainDtoMapper on MountainDto {
   MountainEntity toEntity() {
     return MountainEntity(
+      id: id,
       name: name,
       topAltitude: topAltitude,
       bottomAltitude: bottomAltitude,
@@ -17,6 +18,7 @@ extension MountainDtoMapper on MountainDto {
 extension MountainEntityMapper on MountainEntity {
   MountainDto toDto() {
     return MountainDto(
+      id: id,
       name: name,
       topAltitude: topAltitude,
       bottomAltitude: bottomAltitude,

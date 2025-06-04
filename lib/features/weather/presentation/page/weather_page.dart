@@ -31,6 +31,11 @@ class WeatherView extends StatefulWidget {
 class _WeatherViewState extends State<WeatherView> {
   void _getWeather(BuildContext context) {
     final mountain = context.read<MountainCubit>().state.selectedMountain;
+
+    if (mountain == null) {
+      return;
+    }
+
     context.read<WeatherCubit>().getWeather(
           lat: mountain.latitude,
           lon: mountain.longitude,

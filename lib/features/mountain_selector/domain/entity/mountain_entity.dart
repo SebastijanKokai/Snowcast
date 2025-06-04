@@ -5,6 +5,7 @@ part 'mountain_entity.g.dart';
 @JsonSerializable()
 class MountainEntity {
   const MountainEntity({
+    required this.id,
     required this.name,
     required this.topAltitude,
     required this.bottomAltitude,
@@ -13,6 +14,7 @@ class MountainEntity {
     required this.webcamUrl,
   });
 
+  final String id;
   final String name;
   final int topAltitude;
   final int bottomAltitude;
@@ -21,6 +23,7 @@ class MountainEntity {
   final String webcamUrl;
 
   MountainEntity copyWith({
+    String? id,
     String? name,
     int? topAltitude,
     int? bottomAltitude,
@@ -29,12 +32,14 @@ class MountainEntity {
     String? webcamUrl,
   }) =>
       MountainEntity(
-          name: name ?? this.name,
-          topAltitude: topAltitude ?? this.topAltitude,
-          bottomAltitude: bottomAltitude ?? this.bottomAltitude,
-          latitude: latitude ?? this.latitude,
-          longitude: longitude ?? this.longitude,
-          webcamUrl: webcamUrl ?? this.webcamUrl);
+        id: id ?? this.id,
+        name: name ?? this.name,
+        topAltitude: topAltitude ?? this.topAltitude,
+        bottomAltitude: bottomAltitude ?? this.bottomAltitude,
+        latitude: latitude ?? this.latitude,
+        longitude: longitude ?? this.longitude,
+        webcamUrl: webcamUrl ?? this.webcamUrl,
+      );
 
   factory MountainEntity.fromJson(Map<String, dynamic> json) => _$MountainEntityFromJson(json);
 

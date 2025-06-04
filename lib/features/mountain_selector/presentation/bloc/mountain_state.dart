@@ -1,3 +1,5 @@
+import 'package:snowcast/features/mountain_selector/domain/entity/mountain_entity.dart';
+
 enum Mountain {
   jahorina(
     "Jahorina",
@@ -56,7 +58,7 @@ enum Mountain {
     'https://www.les2alpes.com/hiver/live/webcams/',
   ),
   cortinaAmpezzo(
-    "Cortina d’Ampezzo",
+    "Cortina d'Ampezzo",
     2932,
     1224,
     46.5400,
@@ -83,13 +85,19 @@ enum Mountain {
 
 class MountainState {
   MountainState({
-    this.selectedMountain = Mountain.jahorina,
+    this.mountains = const [],
+    this.selectedMountain,
   });
 
-  final Mountain selectedMountain;
+  final List<MountainEntity> mountains;
+  final MountainEntity? selectedMountain;
 
   MountainState copyWith({
-    Mountain? selectedMountain,
+    List<MountainEntity>? mountains,
+    MountainEntity? selectedMountain,
   }) =>
-      MountainState(selectedMountain: selectedMountain ?? this.selectedMountain);
+      MountainState(
+        mountains: mountains ?? this.mountains,
+        selectedMountain: selectedMountain ?? this.selectedMountain,
+      );
 }

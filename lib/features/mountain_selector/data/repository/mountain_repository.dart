@@ -11,7 +11,7 @@ class MountainRepository {
     return _provider.getMountains().map((dto) => dto.toEntity()).toList();
   }
 
-  MountainEntity getMountainByName(String name) {
-    return _provider.getMountainByName(name).toEntity();
+  MountainEntity getMountainById(String id) {
+    return _provider.getMountainById(id).toEntity();
   }
 }

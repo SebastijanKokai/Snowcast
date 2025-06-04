@@ -2,6 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snowcast/core/theme/gradient_cubit/gradient_cubit.dart';
+import 'package:snowcast/features/mountain_selector/data/provider/mountain_provider.dart';
+import 'package:snowcast/features/mountain_selector/data/repository/mountain_repository.dart';
+import 'package:snowcast/features/mountain_selector/domain/usecase/mountain_usecase.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:snowcast/core/services/shared_preferences_service.dart';
 import 'package:snowcast/core/services/workmanager_service.dart';
@@ -23,14 +26,14 @@ import '../../features/localization/presentation/bloc/locale_cubit.dart';
 final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+  await initializeLocalizationDependencies();
   await initializeGradientCubit();
+  await initializeMountainSelectorDependencies();
   await initializeSharedPreferences();
   await initializeFlutterLocalNotifications();
   await initializeWorkmanager();
-  await initializeMountainSelectorDependencies();
   await initializeWeatherDependencies();
   await initializeNotificationDependencies();
-  await initializeLocalizationDependencies();
 }
 
 Future<void> initializeGradientCubit() async {
@@ -60,54 +63,37 @@ Future<void> initializeWorkmanager() async {
 }
 
 Future<void> initializeMountainSelectorDependencies() async {
-  getIt.registerFactory<MountainCubit>(
-    () => MountainCubit(),
-  );
+  getIt
+    ..registerLazySingleton<MountainProvider>(() => MountainProvider())
+    ..registerLazySingleton<MountainRepository>(() => MountainRepository(getIt()))
+    ..registerLazySingleton<MountainUsecase>(() => MountainUsecase(getIt()))
+    ..registerFactory<MountainCubit>(() => MountainCubit(getIt()));
 }
 
 Future<void> initializeWeatherDependencies() async {
-  getIt.registerLazySingleton<WeatherProvider>(
-    () => RemoteWeatherProvider(),
-  );
-  getIt.registerLazySingleton<WeatherRepository>(
-    () => WeatherRepository(weatherProvider: getIt()),
-  );
-  getIt.registerLazySingleton<WeatherUsecase>(
-    () => WeatherUsecase(weatherRepository: getIt()),
-  );
-  getIt.registerFactory<WeatherCubit>(
-    () => WeatherCubit(getIt()),
-  );
+  getIt
+    ..registerLazySingleton<WeatherProvider>(() => RemoteWeatherProvider())
+    ..registerLazySingleton<WeatherRepository>(() => WeatherRepository(weatherProvider: getIt()))
+    ..registerLazySingleton<WeatherUsecase>(() => WeatherUsecase(weatherRepository: getIt()))
+    ..registerFactory<WeatherCubit>(() => WeatherCubit(getIt()));
 }
 
 Future<void> initializeNotificationDependencies() async {
-  getIt.registerLazySingleton<NotificationProvider>(
-    () => NotificationProvider(getIt()),
-  );
-
-  getIt.registerLazySingleton<NotificationRepository>(
-    () => NotificationRepository(getIt()),
-  );
-
-  getIt.registerLazySingleton<NotificationUsecase>(
-    () => NotificationUsecase(
-      notifications: getIt(),
-      weatherRepository: getIt(),
-      notificationRepository: getIt(),
-      workmanager: getIt(),
-    ),
-  );
-
-  getIt.registerFactory<NotificationCubit>(
-    () => NotificationCubit(getIt()),
-  );
+  getIt
+    ..registerLazySingleton<NotificationProvider>(() => NotificationProvider(getIt()))
+    ..registerLazySingleton<NotificationRepository>(() => NotificationRepository(getIt()))
+    ..registerLazySingleton<NotificationUsecase>(() => NotificationUsecase(
+          notifications: getIt(),
+          weatherRepository: getIt(),
+          notificationRepository: getIt(),
+          workmanager: getIt(),
+        ))
+    ..registerFactory<NotificationCubit>(() => NotificationCubit(getIt()));
 }
 
 Future<void> initializeLocalizationDependencies() async {
   getIt
-    ..registerLazySingleton<LocaleRepository>(
-      () => LocaleRepositoryImpl(getIt()),
-    )
+    ..registerLazySingleton<LocaleRepository>(() => LocaleRepositoryImpl(getIt()))
     ..registerLazySingleton(() => LocaleUsecase(getIt()))
     ..registerFactory(() => LocaleCubit(getIt()));
 }

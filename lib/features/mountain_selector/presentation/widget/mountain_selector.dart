@@ -62,20 +62,19 @@ class _MountainDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<MountainCubit, MountainState, Mountain>(
-      selector: (state) => state.selectedMountain,
+    return BlocBuilder<MountainCubit, MountainState>(
       builder: (context, state) {
-        return DropdownMenu<Mountain>(
+        return DropdownMenu<String>(
           width: context.width - 32,
-          initialSelection: state,
-          onSelected: (mountain) {
-            if (mountain != null) {
-              context.read<MountainCubit>().setMountain(mountain.name);
+          initialSelection: state.selectedMountain?.id,
+          onSelected: (id) {
+            if (id != null) {
+              context.read<MountainCubit>().setMountain(id);
             }
           },
-          dropdownMenuEntries: Mountain.values
-              .map((mountain) => DropdownMenuEntry<Mountain>(
-                    value: mountain,
+          dropdownMenuEntries: state.mountains
+              .map((mountain) => DropdownMenuEntry<String>(
+                    value: mountain.id,
                     label: mountain.name,
                     leadingIcon: const Icon(Icons.terrain),
                   ))
