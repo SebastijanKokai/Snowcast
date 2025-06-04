@@ -11,6 +11,8 @@ class WebcamErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Center(
       child: Card(
         margin: const EdgeInsets.all(16),
@@ -26,14 +28,14 @@ class WebcamErrorState extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'Error Loading Webcam',
+                l10n.errorLoadingWebcam,
                 style: context.text.titleMedium?.copyWith(
                   color: context.colors.onSurface,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Could not load the webcam feed. Please try again later.',
+                l10n.errorLoadingWebcamDescription,
                 style: context.text.bodyMedium?.copyWith(
                   color: context.colors.onSurfaceVariant,
                 ),
@@ -43,7 +45,7 @@ class WebcamErrorState extends StatelessWidget {
               FilledButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh),
-                label: const Text('Try Again'),
+                label: Text(l10n.tryAgain),
               ),
             ],
           ),

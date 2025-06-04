@@ -41,5 +41,8 @@
     "uvIndex": "UV indeks",
     "fog": "Magla",
     "nineDayForecast": "Prognoza za 9 dana",
-    "updatedAt": "Ažurirano u"
+    "updatedAt": "Ažurirano u",
+    "errorLoadingWebcam": "Greška pri učitavanju web kamere",
+    "errorLoadingWebcamDescription": "Nije moguće učitati web kameru. Molimo pokušajte ponovo kasnije.",
+    "tryAgain": "Pokušaj ponovo"
 } 

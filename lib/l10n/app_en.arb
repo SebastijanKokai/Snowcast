@@ -41,5 +41,8 @@
     "uvIndex": "UV Index",
     "fog": "Fog",
     "nineDayForecast": "9-day forecast",
-    "updatedAt": "Updated at"
+    "updatedAt": "Updated at",
+    "errorLoadingWebcam": "Error Loading Webcam",
+    "errorLoadingWebcamDescription": "Could not load the webcam feed. Please try again later.",
+    "tryAgain": "Try Again"
 } 
