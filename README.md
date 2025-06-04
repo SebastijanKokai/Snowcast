@@ -54,6 +54,9 @@ Snowcast sends snowfall notifications 9 days in advance, so you can plan your tr
   </tr>
 </table>
 
+## Demo
+<img src="assets/screenshots/demo.gif" width="350" alt="App Demo"/>
+
 ## Project Structure
 
 ```
